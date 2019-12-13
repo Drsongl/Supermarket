@@ -11,7 +11,7 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdateSave extends ActionSupport {
+public class ProductUpdateSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
 	private String Domitory_ID ;

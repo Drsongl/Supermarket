@@ -11,7 +11,7 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdate extends ActionSupport {
+public class ProductUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
 	private String Domitory_ID;
@@ -58,9 +58,9 @@ public class DomitoryUpdate extends ActionSupport {
 		}
 		
 		//查询所有楼宇
-		list=new BuildingDao().GetList("","Building_Name");
+		//list=new BuildingDao().GetList("","Building_Name");
 		//查询
-		cnbean=new DomitoryDao().GetBean(Integer.parseInt(Domitory_ID));
+		cnbean=new ProductDao().GetBean(Pno);
 		return SUCCESS;
 		
 	}
