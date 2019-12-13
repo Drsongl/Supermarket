@@ -36,12 +36,22 @@ CREATE TABLE product_info(
     Pname char(30) not NULL unique,
     Sellprice NUMERIC(4,2) not NULL,
     Vno int not NULL,
-    Vname char(20) not NULL,
     Lno int not NULL,
-    Lname char(20) not NULL,
     Shelfno int not NULL, -- selfno  可以累积，比如一个超市是1，2，3，另一个超市是4，5，6，这样，就没有问题了
     -- we may put shelfno here, not in replenish table, but the problem is shelfno for each supermarket is different.
     --Stockout_n int not NULL 表示商品缺货报警线
+);
+
+/*
+新建了一个表，主要是商品分类树是一个相对独立的实体
+*/
+CREATE TABLE producttree(
+    -- 商品分类树 
+    Vno int not NULL,
+    Vname char(20) not NULL,
+    Lno int not NULL,
+    Lname char(20) not NULL,
+    PRIMARY KEY (Vno, Lno),
 );
 
 CREATE TABLE all_replenish(
