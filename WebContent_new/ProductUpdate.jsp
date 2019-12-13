@@ -67,21 +67,16 @@ return re.test(str);
               <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改宿舍</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="DomitoryUpdateSave.action" onSubmit="return mycheck()" >
+              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="ProductUpdateSave.action" onSubmit="return mycheck()" >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="Domitory_ID" type="text" class="noshow" id="Domitory_ID" value="<s:property value='cnbean.Domitory_ID'/>"></td>
+                    <td width="67%"><input name="Pno" type="text" class="noshow" id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>楼宇：</td>
-                    <td><select name="Domitory_BuildingID" id="Domitory_BuildingID">
-                      <option value="">请选择</option>
-                      <s:iterator id="aa" value="list">
-                        <option value="${Building_ID}" <s:if test="cnbean.Domitory_BuildingID==Building_ID">selected</s:if>>${Building_Name}</option>
-                      </s:iterator>
-                    </select></td>
-                  </tr>
+                      <td height="30" align="right"><span style="color:red;">*</span>寝室号：</td>
+                      <td><input name="Domitory_Name" type="text" class="text2" id="Domitory_Name" value="<s:property value='cnbean.Domitory_Name'/>"></td>
+                    </tr>
                   <tr>
                     <td height="30" align="right"><span style="color:red;">*</span>寝室号：</td>
                     <td><input name="Domitory_Name" type="text" class="text2" id="Domitory_Name" value="<s:property value='cnbean.Domitory_Name'/>"></td>
