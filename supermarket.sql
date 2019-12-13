@@ -2,15 +2,13 @@ CREATE DATABASE supermarket;
 USE supermarket;
 
 /* public information*/
-CREATE SCHEMA general;
+CREATE SCHEMA general;asd
 asd
-<<<<<<< HEAD
-asd
-=======
-CREATE SCHEMA general;
-CREATE SCHEMA general;
 
->>>>>>> fc4a54f6e1ed37d3ea9c9c10754eade96e76518d
+CREATE SCHEMA general;
+CREATE SCHEMA general;
+ 
+aaa
 
 dfg
 -- 以下定义的int长度可以表示最大的数为10位，数据字典为12位，但bigint可以表示的数又过于大了
