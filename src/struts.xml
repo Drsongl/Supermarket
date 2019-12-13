@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsqs" extends="struts-default" namespace="/" >
+		<action name="ProductManager" class="com.action.ProductManager">
+			<result name="success">/ProductManager.jsp</result>
+		</action>
+		<action name="ProductAdd" class="com.action.ProductAdd">
+			<result name="success">/ProductAdd.jsp</result>
+		</action>
+		<action name="ProductAddSave" class="com.action.ProductAddSave">
+		</action>
+		<action name="ProductDel" class="com.action.ProductDel">
+		  <result name="success" type="chain">ProductManager</result>
+		</action>
+		
+	</package>
+</struts>    
