@@ -3,7 +3,7 @@ public class UserBean {
 
     private String Username ;
     private String Password ;
-    private String Usertype ;
+    private String Type ;
 	
 	public String getUsername() {
 		return Username;
@@ -17,10 +17,10 @@ public class UserBean {
 	public void setPassword(String password) {
 		Password = password;
 	}
-	public String getUsertype() {
-		return Usertype;
+	public String getType() {
+		return Type;
 	}
-	public void setUsertype(String usertype) {
-		Usertype = usertype;
+	public void setType(String type) {
+		Type = type;
 	}	
 }
