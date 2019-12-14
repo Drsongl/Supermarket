@@ -95,8 +95,7 @@ CREATE TABLE traffic_info (
 CREATE TABLE require_info (
     -- 消费者建议
     Ono int PRIMARY KEY,
-    Cno int not NULL foreign key references general.customer_info(Cno),
-    Pno int not NULL foreign key references general.product_info(Pno),
+    Cno int not NULL foreign key references customer_info(Cno),
     Oname char(50) not NULL,
     Ontime date not NULL,
     Offtime date not NULL,
