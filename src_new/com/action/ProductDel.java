@@ -46,7 +46,6 @@ public class ProductDel extends ActionSupport {
 		new ProductDao().Delete("Pno="+Pno);
 		    
 		return SUCCESS;
-		
 	}
 	
 	//еп╤ойг╥Я©уж╣

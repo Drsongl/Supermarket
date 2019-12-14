@@ -38,7 +38,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <tr>
                       <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="ProductAdd.action">添加商品</a></td>
                       <td width="78%">查询：
-                        
                         <select name="SearchRow" id="SearchRow">
                           <option value="Pname">商品名称</option>
                           <option value="Vname">商品大类</option>
@@ -59,6 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td bgcolor="#D5E4F4"><strong>大类名称</strong></td>
                     <td bgcolor="#D5E4F4"><strong>小类编号</strong></td>
                     <td bgcolor="#D5E4F4"><strong>小类名称</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>商品最低库存量</strong></td>
                     <td bgcolor="#D5E4F4"><strong>货架编号</strong></td>
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
 
@@ -72,6 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Vname}</td>
                       <td align="center">${Lno}</td>
                       <td align="center">${Lname}</td>
+                      <td align="center">${Stockout_n}</td>
                       <td align="center">${Shelfno}</td>
                       <td align="center"><a href="ProductUpdate.action?Pno=${Pno}">修改</a> <a href="ProductDel.action?Pno=${Pno}" onClick="return confirm('确定要删除该产品吗？')">删除</a></td>
                     </tr>

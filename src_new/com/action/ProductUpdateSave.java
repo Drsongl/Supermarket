@@ -11,63 +11,65 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdateSave extends ActionSupport {
+public class ProductUpdateSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Domitory_ID ;
-	private String Domitory_BuildingID ;
-    private String Domitory_Name ;
-    private String Domitory_Type ;
-    private String Domitory_Number ;
-    private String Domitory_Tel ;
-
-	public String getDomitory_ID() {
-		return Domitory_ID;
+	private String Pno ;
+    private String Pname ;
+	private String Sellprice ;
+	private String Vno ;
+    //private String Vname ;
+	private String Lno ;
+	//private String Lname ;
+	private String Shelfno ;
+	
+	public int getPno() {
+		return Pno;
 	}
-
-	public void setDomitory_ID(String domitoryID) {
-		Domitory_ID = domitoryID;
+	public void setPno(int pno) {
+		Pno = pno;
 	}
-
-
-	public String getDomitory_BuildingID() {
-		return Domitory_BuildingID;
+	public String getPname() {
+		return Pname;
 	}
-
-	public void setDomitory_BuildingID(String domitoryBuildingID) {
-		Domitory_BuildingID = domitoryBuildingID;
+	public void setPname(String pname) {
+		Pname = pname;
 	}
-
-	public String getDomitory_Name() {
-		return Domitory_Name;
+	public float getSellprice() {
+		return Sellprice;
 	}
-
-	public void setDomitory_Name(String domitoryName) {
-		Domitory_Name = domitoryName;
+	public void setSellprice(float sellprice) {
+		Sellprice = sellprice;
+	}	
+	public int getVno() {
+		return Vno;
 	}
-
-	public String getDomitory_Type() {
-		return Domitory_Type;
+	public void setVno(int vno) {
+		Vno = vno;
 	}
-
-	public void setDomitory_Type(String domitoryType) {
-		Domitory_Type = domitoryType;
+	/*public String getVname() {
+		return Vname;
 	}
-
-	public String getDomitory_Number() {
-		return Domitory_Number;
+	public void setVname(String vname) {
+		Vname = vname;
+	}*/
+	public int getLno() {
+		return Lno;
 	}
-
-	public void setDomitory_Number(String domitoryNumber) {
-		Domitory_Number = domitoryNumber;
+	public void setLno(int lno) {
+		Lno = lno;
 	}
-
-	public String getDomitory_Tel() {
-		return Domitory_Tel;
+	/*public String getLname() {
+		return Lname;
 	}
-
-	public void setDomitory_Tel(String domitoryTel) {
-		Domitory_Tel = domitoryTel;
+	public void setLname(String lname) {
+		Lname = lname;
+	}*/
+	public int getShelfno() {
+		return Shelfno;
+	}
+	public void setShelfno(int shelfno) {
+		Shelfno = shelfno;
 	}
 
 	//处理用户请求的execute方法
@@ -88,26 +90,27 @@ public class DomitoryUpdateSave extends ActionSupport {
 			out.flush();out.close();return null;
 		}
 		
-		//查询用户名是否存在
-		List<DomitoryBean> list=new DomitoryDao().GetList("Domitory_Name='"+Domitory_Name+"' and Domitory_BuildingID="+Domitory_BuildingID+" and Domitory_ID!="+Domitory_ID, "");
+		//查询newname是否存在
+		List<ProductBean> list=new ProductDao().GetList("Pname='"+Pname+"' and Pno!="+Pno, "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('该楼宇中已经存在该寝室号！');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('该商品名称已存在！');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
 		//修改
 		
-		DomitoryBean cnbean=new DomitoryBean();
-		cnbean=new DomitoryDao().GetBean(Integer.parseInt(Domitory_ID));
-		cnbean.setDomitory_BuildingID(Integer.parseInt(Domitory_BuildingID));
-		cnbean.setDomitory_Name(Domitory_Name);
-		cnbean.setDomitory_Type(Domitory_Type);
-		cnbean.setDomitory_Number(Domitory_Number);
-		cnbean.setDomitory_Tel(Domitory_Tel);
+		ProductBean cnbean=new ProductBean();
+		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); //Pno 采用自增的方式，不具有实际意义
+		cnbean.setPname(Pname);
+		cnbean.setSellprice(Float.parseFloat(Sellprice));
+		cnbean.setVno(Integer.parseInt(Vno));
+		cnbean.setLno(Integer.parseInt(Lno));
+		cnbean.setShelfno(Integer.parseInt(Shelfno));
+		cnbean.setStockout_n(Integer.parseInt(Stockout_n));
 		new DomitoryDao().Update(cnbean);
 		    
 		//跳转
-		out.print("<script language='javascript'>alert('修改成功！');window.location='DomitoryManager.action';</script>");
+		out.print("<script language='javascript'>alert('修改成功！');window.location='ProductManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}

@@ -14,11 +14,11 @@ import com.dao.*;
 public class ProductAdd extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<ProductBean> list;
-	public List<ProductBean> getList() {
+	private List<ProducttreeBean> list;
+	public List<ProducttreeBean> getList() {
 		return list;
 	}
-	public void setList(List<ProductBean> list) {
+	public void setList(List<ProducttreeBean> list) {
 		this.list = list;
 	}
 	//处理用户请求的execute方法
@@ -38,9 +38,9 @@ public class ProductAdd extends ActionSupport {
 			out.print("<script language='javascript'>alert('请重新登录！');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
+		// 获得商品树表
+		list=new ProducttreeDao().GetList("","Vno");
 
-		
-	
 		return SUCCESS;
 		
 	}

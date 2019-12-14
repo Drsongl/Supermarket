@@ -13,7 +13,15 @@
 		<action name="ProductDel" class="com.action.ProductDel">
 		  <result name="success" type="chain">ProductManager</result>
 		</action>
-		
+
+		<action name="ProductUpdate" class="com.action.ProductUpdate">
+		    <result name="success">/ProductUpdate.jsp</result>
+		</action>
+		<action name="ProductUpdateSave" class="com.action.ProductUpdateSave">
+		</action>
+		<action name="ProductDel" class="com.action.ProductDel">
+		  <result name="success" type="chain">ProductManager</result>
+		</action>
 
 
 
