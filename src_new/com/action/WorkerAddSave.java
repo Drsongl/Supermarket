@@ -14,63 +14,36 @@ import com.dao.*;
 public class ProductAddSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private Stirng Pno ;
-    private String Pname ;
-    private String Sellprice ;
-    private String Vno ;
-	private String Vname ;
-	private String Lno ;
-	private String Lname ;
-	private String Shelfno ;
+	private Stirng Sno ;
+    private String Sname ;
+    private String Sgrade ;
+    private String Sjob ;
 
 
-	public int getPno() {
-		return Pno;
+
+	public String getSno() {
+		return Sno;
 	}
-	public void setPno(int pno) {
-		Pno = pno;
+	public void setSno(int sno) {
+		Sno = sno;
 	}
-	public String getPname() {
-		return Pname;
+	public String getSname() {
+		return Sname;
 	}
-	public void setPname(String pname) {
-		Pname = pname;
+	public void setSname(String sname) {
+		Sname = sname;
 	}
-	public float getSellprice() {
-		return Sellprice;
+	public String getSgrade() {
+		return Sgrade;
 	}
-	public void setSellprice(float sellprice) {
-		Sellprice = sellprice;
+	public void setSgrade(String sgrade) {
+		Sgrade = sgrade;
 	}	
-	public int getVno() {
-		return Vno;
+	public String getSjob() {
+		return Sjob;
 	}
-	public void setVno(int vno) {
-		Vno = vno;
-	}
-	public String getVname() {
-		return Vname;
-	}
-	public void setVname(String vname) {
-		Vname = vname;
-	}
-	public int getLno() {
-		return Lno;
-	}
-	public void setLno(int lno) {
-		Lno = lno;
-	}
-	public String getLname() {
-		return Lname;
-	}
-	public void setLname(String lname) {
-		Lname = lname;
-	}
-	public int getShelfno() {
-		return Shelfno;
-	}
-	public void setShelfno(int shelfno) {
-		Shelfno = shelfno;
+	public void setSjob(String sjob) {
+		Sjob = sjob;
 	}
 
 }
@@ -94,26 +67,23 @@ public class ProductAddSave extends ActionSupport {
 		}
 		
 		//查询是否存在
-		List<ProductBean> list=new ProductDao().GetList("Pname='"+Pname+"'", "");
+		List<ProductBean> list=new WorkerDao().GetList("Sno="+Sno+"", "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('该商品名称已存在！');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('该员工学号已存在！');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
 		//添加
-		ProductBean cnbean=new ProductBean();
-		//cnbean.setPno(Integer.parseInt(Pno));
-		cnbean.setPname(Pname);
-		cnbean.setSellprice(Float.parseFloat(Sellprice))
-		cnbean.setVno(Integer.parseInt(Vno));
-		//cnbean.setVname(Vname);
-		cnbean.setLno(Integer.parseInt(Lno));
-		//cnbean.setLname(Lname);
-		cnbean.setShelfno(Integer.parseInt(Shelfno));
+		ProductBean cnbean=new WorkerBean();
+		cnbean.setSno(Integer.parseInt(Sno));
+		cnbean.setSname(Sname);
+		cnbean.setSgrade(Float.parseFloat(Sgrade))
+		cnbean.setSjob(Sjob);
+
 		new ProductDao().Add(cnbean);
 		    
 		//跳转
-		out.print("<script language='javascript'>alert('添加成功！');window.location='ProductManager.action';</script>");
+		out.print("<script language='javascript'>alert('添加成功！');window.location='WorkerManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}

@@ -16,23 +16,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function mycheck(){
-   if(isNull(form1.Domitory_BuildingID.value)){  
+   if(isNull(form1.Pname.value)){  
    alert("请输入商品名称！"); 
    return false;
    }
-   if(isNull(form1.Domitory_Name.value)){
+   if(isNull(form1.Sellprice.value)){
    alert("请输入商品售价！");
    return false;
    }
-   if(isNull(form1.Domitory_Type.value)){
+   if(isNull(form1.Vname.value)){
    alert("请选择商品大类名称！");
    return false;
    }
-   if(isNull(form1.Domitory_Number.value)){
+   if(isNull(form1.Lname.value)){
    alert("请选择商品小类名称！");
    return false;
    }
-   if(isNull(form1.Domitory_Tel.value)){
+   if(isNull(form1.Shelfno.value)){
    alert("请选择货架编号！");
    return false;
    }
@@ -51,7 +51,7 @@ return re.test(str);
 <center>
   <table width="900" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">校园宿舍管理系统</td>
+      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">学校超市管理系统</td>
     </tr>
     <tr>
       <td height="30" background="Images/MenuBg.jpg">&nbsp;</td>

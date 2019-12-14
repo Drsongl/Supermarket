@@ -11,14 +11,14 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductManager extends ActionSupport {
+public class WorkerManager extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<ProductBean> list;
-	public List<ProductBean> getList() {
+	private List<WorkerBean> list;
+	public List<WorkerBean> getList() {
 		return list;
 	}
-	public void setList(List<ProdcutBean> list) {
+	public void setList(List<WorkerBean> list) {
 		this.list = list;
 	}
 	private String SearchRow;
@@ -61,7 +61,7 @@ public class ProductManager extends ActionSupport {
 		}
 		
 		//查询所有
-		list=new ProductDao().GetList(strWhere,"Vno");
+		list=new WorkerDao().GetList(strWhere,"Sno");
 	
 		return SUCCESS;
 		

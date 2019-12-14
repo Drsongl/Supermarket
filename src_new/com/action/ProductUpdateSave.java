@@ -23,10 +23,10 @@ public class ProductUpdateSave extends ActionSupport {
 	//private String Lname ;
 	private String Shelfno ;
 	
-	public int getPno() {
+	public String getPno() {
 		return Pno;
 	}
-	public void setPno(int pno) {
+	public void setPno(String pno) {
 		Pno = pno;
 	}
 	public String getPname() {
@@ -35,16 +35,16 @@ public class ProductUpdateSave extends ActionSupport {
 	public void setPname(String pname) {
 		Pname = pname;
 	}
-	public float getSellprice() {
+	public String getSellprice() {
 		return Sellprice;
 	}
-	public void setSellprice(float sellprice) {
+	public void setSellprice(String sellprice) {
 		Sellprice = sellprice;
 	}	
-	public int getVno() {
+	public String getVno() {
 		return Vno;
 	}
-	public void setVno(int vno) {
+	public void setVno(String vno) {
 		Vno = vno;
 	}
 	/*public String getVname() {
@@ -53,10 +53,10 @@ public class ProductUpdateSave extends ActionSupport {
 	public void setVname(String vname) {
 		Vname = vname;
 	}*/
-	public int getLno() {
+	public String getLno() {
 		return Lno;
 	}
-	public void setLno(int lno) {
+	public void setLno(String lno) {
 		Lno = lno;
 	}
 	/*public String getLname() {
@@ -65,10 +65,10 @@ public class ProductUpdateSave extends ActionSupport {
 	public void setLname(String lname) {
 		Lname = lname;
 	}*/
-	public int getShelfno() {
+	public String getShelfno() {
 		return Shelfno;
 	}
-	public void setShelfno(int shelfno) {
+	public void setShelfno(String shelfno) {
 		Shelfno = shelfno;
 	}
 
@@ -107,7 +107,7 @@ public class ProductUpdateSave extends ActionSupport {
 		cnbean.setLno(Integer.parseInt(Lno));
 		cnbean.setShelfno(Integer.parseInt(Shelfno));
 		cnbean.setStockout_n(Integer.parseInt(Stockout_n));
-		new DomitoryDao().Update(cnbean);
+		new ProductDao().Update(cnbean);
 		    
 		//跳转
 		out.print("<script language='javascript'>alert('修改成功！');window.location='ProductManager.action';</script>");

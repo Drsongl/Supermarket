@@ -16,24 +16,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function mycheck(){
-   if(isNull(form1.Domitory_BuildingID.value)){  
-   alert("请输入商品名称！"); 
+   if(isNull(form1.Sname.value)){  
+   alert("请输入员工姓名！"); 
    return false;
    }
-   if(isNull(form1.Domitory_Name.value)){
-   alert("请输入商品售价！");
+   if(isNull(form1.Sgrade.value)){
+   alert("请输入员工年级！");
    return false;
    }
-   if(isNull(form1.Domitory_Type.value)){
-   alert("请选择商品大类名称！");
-   return false;
-   }
-   if(isNull(form1.Domitory_Number.value)){
-   alert("请选择商品小类名称！");
-   return false;
-   }
-   if(isNull(form1.Domitory_Tel.value)){
-   alert("请选择货架编号！");
+   if(isNull(form1.Sjob.value)){
+   alert("请选择员工职位！");
    return false;
    }
 }
@@ -51,7 +43,7 @@ return re.test(str);
 <center>
   <table width="900" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">校园宿舍管理系统</td>
+      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">学校超市管理系统</td>
     </tr>
     <tr>
       <td height="30" background="Images/MenuBg.jpg">&nbsp;</td>
@@ -64,54 +56,33 @@ return re.test(str);
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改商品信息</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改员工信息</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="ProductUpdateSave.action" onSubmit="return mycheck()" >
+              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="WorkerUpdateSave.action" onSubmit="return mycheck()" >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="Pno" type="text" class="noshow" id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
+                    <td width="67%"><input name="Sno" type="text" class="noshow" id="Sno" value="<s:property value='cnbean.Sno'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品名称：</td>
-                    <td><input name="Pname" type="text" class="text2" id="Pname" value="<s:property value='cnbean.Pname'/>"></td>
-                  </tr>
-
-                  <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品售价：</td>
-                    <td><input name="Sellprice" type="text" class="text2" id="Sellprice" value="<s:property value='cnbean.Sellprice'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>员工姓名：</td>
+                    <td><input name="Sname" type="text" class="text2" id="Sname" value="<s:property value='cnbean.Sname'/>"></td>
                   </tr>
 
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品大类名称：</td>
-                    <td><select name="Vno" id="Vno">
-                      <option value="">请选择</option>
-                      <s:iterator id="aa" value="list"> <!--here list should be producttreebean-->
-                        <option value="${Vno}" <s:if test="cnbean.Vno==Vno">selected</s:if>>${Vname}</option>
-                      </s:iterator>
-                    </select></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>员工年级：</td>
+                    <td><input name="Sgrade" type="text" class="text2" id="Sgrade" value="<s:property value='cnbean.Sgrade'/>"></td>
                   </tr>
 
-                  <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品小类名称：</td>
-                    <td><select name="Lno" id="Lno">
-                      <option value="">请选择</option>
-                      <s:iterator id="aa" value="list"><!--here list should be producttreebean-->
-                        <option value="${Lno}" <s:if test="cnbean.Lno==Lno">selected</s:if>>${Lname}</option>
-                      </s:iterator>
-                    </select></td>
-                  </tr>
+                  
 
                   <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>商品最低库存量：</td>
-                      <td><input name="Stockout_n" type="text" class="text2" id="Stockout_n" value="<s:property value='cnbean.Stockout_n'/>"></td>
+                      <td height="30" align="right"><span style="color:red;">*</span>员工职位：</td>
+                      <td><input name="Sjob" type="text" class="text2" id="Sjob" value="<s:property value='cnbean.Sjob'/>"></td>
                   </tr>
                   
-                  <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>货架编号：</td>
-                    <td><input name="Shelfno" type="text" class="text2" id="Shelfno" value="<s:property value='cnbean.Shelfno'/>"></td>
-                  </tr>
+                
                  
                   <tr>
                     <td height="30">&nbsp;</td>

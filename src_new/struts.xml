@@ -10,6 +10,8 @@
 		<action name="Quit" class="com.action.Quit">
 			<result name="success">/Login.jsp</result>
 		</action>
+
+		<!--product management-->
 		<action name="ProductManager" class="com.action.ProductManager">
 			<result name="success">/ProductManager.jsp</result>
 		</action>
@@ -18,10 +20,6 @@
 		</action>
 		<action name="ProductAddSave" class="com.action.ProductAddSave">
 		</action>
-		<action name="ProductDel" class="com.action.ProductDel">
-		  <result name="success" type="chain">ProductManager</result>
-		</action>
-
 		<action name="ProductUpdate" class="com.action.ProductUpdate">
 		    <result name="success">/ProductUpdate.jsp</result>
 		</action>
@@ -29,6 +27,23 @@
 		</action>
 		<action name="ProductDel" class="com.action.ProductDel">
 		  <result name="success" type="chain">ProductManager</result>
+		</action>
+		<!--worker management-->
+		<action name="WorkerManager" class="com.action.WorkerManager">
+			<result name="success">/WorkerManager.jsp</result>
+		</action>
+		<action name="WorkerAdd" class="com.action.WorkerAdd">
+			<result name="success">/WorkerAdd.jsp</result>
+		</action>
+		<action name="WorkerAddSave" class="com.action.WorkerAddSave">
+		</action>
+		<action name="WorkerUpdate" class="com.action.WorkerUpdate">
+		    <result name="success">/WorkerUpdate.jsp</result>
+		</action>
+		<action name="WorkerUpdateSave" class="com.action.WorkerUpdateSave">
+		</action>
+		<action name="WorkerDel" class="com.action.WorkerDel">
+		  	<result name="success" type="chain">WorkerManager</result>
 		</action>
 
 

@@ -11,35 +11,28 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdate extends ActionSupport {
+public class WorkerUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Pno;
+	private String Sno;
 	private ProductBean cnbean;
-	private List<ProducttreeBean> list;
 
-	public String getPno() {
-		return Pno;
+	public String getSno() {
+		return Sno;
 	}
 
-	public void setPno(String pno) {
-		Pno = pno;
+	public void setSno(String sno) {
+		Sno = sno;
 	}
 
-	public ProductBean getCnbean() {
+	public WorkerBean getCnbean() {
 		return cnbean;
 	}
 
-	public void setCnbean(ProductBean cnbean) {
+	public void setCnbean(WorkerBean cnbean) {
 		this.cnbean = cnbean;
 	}
-	
-	public List<ProducttreeBean> getList() {
-		return list;
-	}
-	public void setList(List<ProducttreeBean> list) {
-		this.list = list;
-	}
+
 
 
 	//处理用户请求的execute方法
@@ -60,10 +53,9 @@ public class DomitoryUpdate extends ActionSupport {
 			out.flush();out.close();return null;
 		}
 		
-		//查询所有商品大类名称 Vname
-		list=new ProducttreeDao().GetList("","Vname"); // here we want get a list of all product tree vnames
+		
 		//查询
-		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); // we want a bean of particular pno
+		cnbean=new WorkerDao().GetBean(Integer.parseInt(Sno)); // we want a bean of particular sno
 		return SUCCESS;
 		
 	}

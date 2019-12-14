@@ -14,12 +14,12 @@ import com.dao.*;
 public class ProductDel extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private int Pno ;
-	public int Pno() {
+	private String Pno ;
+	public String Pno() {
 		return Pno;
 	}
 
-	public void setPno(int pno) {
+	public void setPno(String pno) {
 		Pno = pno;
 	}
 

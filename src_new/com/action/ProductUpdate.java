@@ -11,7 +11,7 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdate extends ActionSupport {
+public class ProductUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
 	private String Pno;
