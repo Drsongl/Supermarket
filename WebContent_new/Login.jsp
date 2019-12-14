@@ -64,9 +64,9 @@ return re.test(str);
                   <td height="30" align="right" class="STYLE2">身份：</td>
                   <td align="left"><select name="Type" id="Type">
                     <option value="">请选择</option>
-                    <option value="管理员/经理">管理员/经理</option>
-                    <option value="超市员工">超市员工</option>
-                    <option value="学生">学生</option>
+                    <option value="1">管理员/经理</option>
+                    <option value="2">超市员工</option>
+                    <option value="3">学生</option>
                   </select></td>
                 </tr>
                 <tr>
