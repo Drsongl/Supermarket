@@ -56,30 +56,31 @@ return re.test(str);
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改员工信息</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改商品库存信息</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="WorkerUpdateSave.action" onSubmit="return mycheck()" >
+              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="StorageUpdateSave.action" onSubmit="return mycheck()" >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="Sno" type="text" class="noshow" id="Sno" value="<s:property value='cnbean.Sno'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>商品编码：</td>
+                    <td width="67%"><input name="Pno" type="text" disabled='disabled' id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>员工姓名：</td>
-                    <td><input name="Sname" type="text" class="text2" id="Sname" value="<s:property value='cnbean.Sname'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>商品名称：</td>
+                    <td><input name="Pname" type="text" class="text2" disabled='disabled' id="Pname" value="<s:property value='cnbean.Pname'/>"></td>
                   </tr>
 
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>员工年级：</td>
-                    <td><input name="Sgrade" type="text" class="text2" id="Sgrade" value="<s:property value='cnbean.Sgrade'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>商品库存量：</td>
+                    <td><input name="Quantity" type="text" class="text2" id="Quantity" value="<s:property value='cnbean.Quantity'/>"></td>
                   </tr>
 
                   
 
                   <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>员工职位：</td>
-                      <td><input name="Sjob" type="text" class="text2" id="Sjob" value="<s:property value='cnbean.Sjob'/>"></td>
+                      <td height="30" align="right"><span style="color:red;">*</span>商品预警量：</td>
+                      <td><input name="Stockout_n" type="text" class="text2" disabled='disabled' id="Stockout_n" value="<s:property value='cnbean.Stockout_n'/>"></td>
                   </tr>
                   
                 

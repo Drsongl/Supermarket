@@ -11,38 +11,26 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class WorkerUpdateSave extends ActionSupport {
+public class StorageUpdateSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Sno ;
-    private String Sname ;
-	private String Sgrade ;
-	private String Sjob ;
+	private String Pno ;
+    private String Quantity ;
+
 	
-	public String getSno() {
-		return Sno;
+	public String getPno() {
+		return Pno;
 	}
-	public void setPno(String sno) {
-		Sno = sno;
+	public void setPno(String pno) {
+		Pno = pno;
 	}
-	public String getSname() {
-		return Sname;
+	public String getQuantity() {
+		return Quantity;
 	}
-	public void setSname(String sname) {
-		Sname = sname;
+	public void setQuantity(String quantity) {
+		Quantity = quantity;
 	}
-	public String getSgrade() {
-		return Sgrade;
-	}
-	public void setSgrade(String sgrade) {
-		Sgrade = sgrade;
-	}	
-	public String getSjob() {
-		return Sjob;
-	}
-	public void setSjob(String sjob) {
-		Sjob = sjob;
-	}
+	
 	
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
@@ -65,16 +53,15 @@ public class WorkerUpdateSave extends ActionSupport {
 		
 		//修改
 		
-		WorkerBean cnbean=new WorkerBean();
-		cnbean=new WorkerDao().GetBean(Integer.parseInt(Sno)); 
-		cnbean.setSname(Sname);
-		cnbean.setSgrade(Sgrade);
-		cnbean.setSjob(Sjob);
+		StorageBean cnbean=new StorageBean();
+		cnbean=new StorageDao().GetBean(Integer.parseInt(Pno)); 
+		cnbean.setQuantity(Quantity);
+		
 
-		new WorkerDao().Update(cnbean);
+		new StorageDao().Update(cnbean); // We only change quantity
 		    
 		//跳转
-		out.print("<script language='javascript'>alert('修改成功！');window.location='WorkerManager.action';</script>");
+		out.print("<script language='javascript'>alert('修改成功！');window.location='StorageManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}

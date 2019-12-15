@@ -11,25 +11,25 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class WorkerUpdate extends ActionSupport {
+public class StorageUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Sno;
-	private ProductBean cnbean;
+	private String Pno;
+	private StorageBean cnbean;
 
-	public String getSno() {
-		return Sno;
+	public String getPno() {
+		return Pno;
 	}
 
-	public void setSno(String sno) {
-		Sno = sno;
+	public void setPno(String pno) {
+		Pno = pno;
 	}
 
-	public WorkerBean getCnbean() {
+	public StorageBean getCnbean() {
 		return cnbean;
 	}
 
-	public void setCnbean(WorkerBean cnbean) {
+	public void setCnbean(StorageBean cnbean) {
 		this.cnbean = cnbean;
 	}
 
@@ -55,7 +55,7 @@ public class WorkerUpdate extends ActionSupport {
 		
 		
 		//查询
-		cnbean=new WorkerDao().GetBean(Integer.parseInt(Sno)); // we want a bean of particular sno
+		cnbean=new StorageDao().GetBean(Integer.parseInt(Pno)); // we want a bean of particular sno
 		return SUCCESS;
 		
 	}

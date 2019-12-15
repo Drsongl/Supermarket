@@ -11,14 +11,14 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class WorkerManager extends ActionSupport {
+public class StorageManager extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<WorkerBean> list;
-	public List<WorkerBean> getList() {
+	private List<StorageBean> list;
+	public List<StorageBean> getList() {
 		return list;
 	}
-	public void setList(List<WorkerBean> list) {
+	public void setList(List<StorageBean> list) {
 		this.list = list;
 	}
 	private String SearchRow;
@@ -61,7 +61,7 @@ public class WorkerManager extends ActionSupport {
 		}
 		
 		//查询所有
-		list=new WorkerDao().GetList(strWhere,"Sno");
+		list=new StorageDao().GetList(strWhere,"Pname"); // here we need a vague search
 	
 		return SUCCESS;
 		
