@@ -11,27 +11,40 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class StorageUpdateSave extends ActionSupport {
+public class AdviceUpdateSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Pno ;
-    private String Quantity ;
+	private String Ono ;
+	private String Offtime ;
+	private String Sno ;
+	private String Ostatus ;
 
 	
-	public String getPno() {
+	public String getOno() {
 		return Pno;
 	}
-	public void setPno(String pno) {
-		Pno = pno;
+	public void setOno(String ono) {
+		Ono = ono;
 	}
-	public String getQuantity() {
-		return Quantity;
+	public String getOfftime() {
+		return Pno;
 	}
-	public void setQuantity(String quantity) {
-		Quantity = quantity;
+	public void setOfftime(String offtime) {
+		Offtime = offtime;
 	}
-	
-	
+	public String getSno() {
+		return Sno;
+	}
+	public void setSno(String sno) {
+		Sno = sno;
+	}
+	public String getOstatus() {
+		return Pno;
+	}
+	public void setOstatus(String ostatus) {
+		Ostatus = ostatus;
+	}
+
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
 		
@@ -53,15 +66,16 @@ public class StorageUpdateSave extends ActionSupport {
 		
 		//修改
 		
-		StorageBean cnbean=new StorageBean();
-		cnbean=new StorageDao().GetBean(Integer.parseInt(Pno)); 
-		cnbean.setQuantity(Quantity);
-		
+		AdviceBean cnbean=new AdviceBean();
+		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono)); 
+		cnbean.setOfftime(Offtime);
+		cnbean.setSno(Sno);
+		cnbean.setOstatus(Ostatus);
 
-		new StorageDao().Update(cnbean); // We only change quantity
+		new AdviceDao().Update(cnbean); // We only change quantity
 		    
 		//跳转
-		out.print("<script language='javascript'>alert('修改成功！');window.location='StorageManager.action';</script>");
+		out.print("<script language='javascript'>alert('修改成功！');window.location='AdviceManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}

@@ -56,6 +56,17 @@
 		<action name="StorageUpdateSave" class="com.action.StorageUpdateSave">
 		</action>
 
+		<!--Advice Management-->
+		<action name="AdviceManager" class="com.action.AdviceManager">
+			<result name="success">/AdviceManager.jsp</result>
+		</action>
+		<action name="AdviceUpdate" class="com.action.AdviceUpdate">
+		    <result name="success">/AdviceUpdate.jsp</result>
+		</action>
+		<action name="AdviceUpdateSave" class="com.action.AdviceUpdateSave">
+		</action>
+
+
 
 
 

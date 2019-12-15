@@ -16,16 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function mycheck(){
-   if(isNull(form1.Sname.value)){  
-   alert("请输入员工姓名！"); 
+   if(isNull(form1.Offtime.value)){  
+   alert("请输入解决时间！"); 
    return false;
    }
-   if(isNull(form1.Sgrade.value)){
-   alert("请输入员工年级！");
-   return false;
-   }
-   if(isNull(form1.Sjob.value)){
-   alert("请选择员工职位！");
+   if(isNull(form1.Sno.value)){
+   alert("请输入负责员工编号！");
    return false;
    }
 }
@@ -56,31 +52,29 @@ return re.test(str);
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">修改商品库存信息</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">更新消费者建议状态</td>
             </tr>
             <tr>
-              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="StorageUpdateSave.action" onSubmit="return mycheck()" >
+              <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="AdviceUpdateSave.action" onSubmit="return mycheck()" >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品编码：</td>
-                    <td width="67%"><input name="Pno" type="text" disabled='disabled' id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>意见编码：</td>
+                    <td width="67%"><input name="Ono" type="text" disabled='disabled' id="Ono" value="<s:property value='cnbean.Ono'/>"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品名称：</td>
-                    <td><input name="Pname" type="text" class="text2" disabled='disabled' id="Pname" value="<s:property value='cnbean.Pname'/>"></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>解决时间：</td>
+                    <td><input name="Offtime" type="text" class="text2" id="Offtime" value=""></td>
+                  </tr>
+
+                  <tr>
+                    <td height="30" align="right"><span style="color:red;">*</span>负责员工编号：</td>
+                    <td><input name="Sno" type="text" class="text2" id="Sno" value=""></td>
                   </tr>
 
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品库存量：</td>
-                    <td><input name="Quantity" type="text" class="text2" id="Quantity" value="<s:property value='cnbean.Quantity'/>"></td>
-                  </tr>
-
-                  
-
-                  <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>商品预警量：</td>
-                      <td><input name="Stockout_n" type="text" class="text2" disabled='disabled' id="Stockout_n" value="<s:property value='cnbean.Stockout_n'/>"></td>
+                      <td height="30" align="right"><span style="color:red;">*</span>建议状态：</td>
+                      <td><input name="Ostatus" type="text" class="text2" id="Ostatus" value="1"></td>
                   </tr>
                   
                 

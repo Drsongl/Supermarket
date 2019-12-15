@@ -11,14 +11,14 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class StorageManager extends ActionSupport {
+public class AdviceManager extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<StorageBean> list;
-	public List<StorageBean> getList() {
+	private List<AdviceBean> list;
+	public List<AdviceBean> getList() {
 		return list;
 	}
-	public void setList(List<StorageBean> list) {
+	public void setList(List<AdviceBean> list) {
 		this.list = list;
 	}
 	private String SearchRow;
@@ -61,7 +61,7 @@ public class StorageManager extends ActionSupport {
 		}
 		
 		//查询所有
-		list=new StorageDao().GetList(strWhere,"Pname"); // here we need a vague search
+		list=new AdviceDao().GetList(strWhere,"Ostatus"); // here we need a vague search
 	
 		return SUCCESS;
 		

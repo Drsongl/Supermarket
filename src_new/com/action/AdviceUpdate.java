@@ -11,25 +11,25 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class StorageUpdate extends ActionSupport {
+public class AdviceUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private String Pno;
-	private StorageBean cnbean;
+	private String Ono;
+	private AdviceBean cnbean;
 
-	public String getPno() {
-		return Pno;
+	public String getOno() {
+		return Ono;
 	}
 
-	public void setPno(String pno) {
-		Pno = pno;
+	public void setOno(String ono) {
+		Ono = ono;
 	}
 
-	public StorageBean getCnbean() {
+	public AdviceBean getCnbean() {
 		return cnbean;
 	}
 
-	public void setCnbean(StorageBean cnbean) {
+	public void setCnbean(AdviceBean cnbean) {
 		this.cnbean = cnbean;
 	}
 
@@ -55,7 +55,7 @@ public class StorageUpdate extends ActionSupport {
 		
 		
 		//查询
-		cnbean=new StorageDao().GetBean(Integer.parseInt(Pno)); // we want a bean of particular sno
+		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono)); 
 		return SUCCESS;
 		
 	}
