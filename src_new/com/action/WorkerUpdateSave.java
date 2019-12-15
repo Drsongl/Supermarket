@@ -22,7 +22,7 @@ public class WorkerUpdateSave extends ActionSupport {
 	public String getSno() {
 		return Sno;
 	}
-	public void setPno(String sno) {
+	public void setSno(String sno) {
 		Sno = sno;
 	}
 	public String getSname() {

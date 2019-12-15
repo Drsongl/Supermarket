@@ -15,7 +15,7 @@ public class WorkerUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
 	private String Sno;
-	private ProductBean cnbean;
+	private WorkerBean cnbean;
 
 	public String getSno() {
 		return Sno;
