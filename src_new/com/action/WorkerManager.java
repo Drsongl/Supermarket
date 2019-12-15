@@ -11,14 +11,14 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductManager extends ActionSupport {
+public class WorkerManager extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<DomitoryBean> list;
-	public List<DomitoryBean> getList() {
+	private List<WorkerBean> list;
+	public List<WorkerBean> getList() {
 		return list;
 	}
-	public void setList(List<DomitoryBean> list) {
+	public void setList(List<WorkerBean> list) {
 		this.list = list;
 	}
 	private String SearchRow;
@@ -35,20 +35,7 @@ public class ProductManager extends ActionSupport {
 	public void setSearchKey(String searchKey) {
 		SearchKey = searchKey;
 	}
-	private List<BuildingBean> buildinglist;
-	public List<BuildingBean> getBuildinglist() {
-		return buildinglist;
-	}
-	public void setBuildinglist(List<BuildingBean> buildinglist) {
-		this.buildinglist = buildinglist;
-	}
-	private String Domitory_BuildingID;
-	public String getDomitory_BuildingID() {
-		return Domitory_BuildingID;
-	}
-	public void setDomitory_BuildingID(String domitoryBuildingID) {
-		Domitory_BuildingID = domitoryBuildingID;
-	}
+
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
 		
@@ -72,16 +59,9 @@ public class ProductManager extends ActionSupport {
 		{
 			strWhere+=" and "+SearchRow+"='"+SearchKey+"'";
 		}
-		if(!(isInvalid(Domitory_BuildingID)))
-		{
-			strWhere+=" and Domitory_BuildingID='"+Domitory_BuildingID+"'";
-		}
-		
-		//查询所有楼宇
-		buildinglist=new BuildingDao().GetList("","Building_Name");
 		
 		//查询所有
-		list=new DomitoryDao().GetList(strWhere,"Domitory_Name");
+		list=new WorkerDao().GetList(strWhere,"Sno");
 	
 		return SUCCESS;
 		

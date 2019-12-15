@@ -29,20 +29,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">产品信息管理</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">员工信息管理</td>
             </tr>
             <tr>
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
                 <form name="form1" method="post" action="DomitoryManager.action">
                   <table width="100%%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="ProductAdd.action">添加商品</a></td>
+                      <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="WorkerAdd.action">添加员工</a></td>
                       <td width="78%">查询：
                         <select name="SearchRow" id="SearchRow">
-                          <option value="Pname">商品名称</option>
-                          <option value="Vname">商品大类</option>
-                          <option value="Lname">商品小类</option>
-                          
+                          <option value="Sno">员工学号</option>
+                          <option value="Sname">员工姓名</option>
+                          <option value="Sgrade">员工年级</option>
+                          <option value="Sjob">员工职位</option>
                         </select>
                         <input name="SearchKey" type="text" class="text1" id="SearchKey">
                         <input type="submit" name="button" id="button" value="点击查询"></td>
@@ -51,30 +51,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </form>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr align="center"  class="t1">
-                    <td height="25" bgcolor="#D5E4F4"><strong>商品编号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>商品名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>售价</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>大类编号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>大类名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>小类编号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>小类名称</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>商品最低库存量</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>货架编号</strong></td>
+                    <td height="25" bgcolor="#D5E4F4"><strong>员工学号</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>员工姓名</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>员工年级</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>员工职位</strong></td>
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
 
                   </tr>
                   <s:iterator id="aa" value="list">
                     <tr align="center">
-                      <td height="25" align="center">${Pno}</td>
-                      <td align="center">${Pname}</td>
-                      <td align="center">${Sellprice}</td>
-                      <td align="center">${Vno}</td>
-                      <td align="center">${Vname}</td>
-                      <td align="center">${Lno}</td>
-                      <td align="center">${Lname}</td>
-                      <td align="center">${Stockout_n}</td>
-                      <td align="center">${Shelfno}</td>
-                      <td align="center"><a href="ProductUpdate.action?Pno=${Pno}">修改</a> <a href="ProductDel.action?Pno=${Pno}" onClick="return confirm('确定要删除该产品吗？')">删除</a></td>
+                      <td height="25" align="center">${Sno}</td>
+                      <td align="center">${Sname}</td>
+                      <td align="center">${Sgrade}</td>
+                      <td align="center">${Sjob}</td>
+                      <td align="center"><a href="WorkerUpdate.action?Sno=${Sno}">修改</a> <a href="WorkerDel.action?Sno=${Sno}" onClick="return confirm('确定要删除该产品吗？')">删除</a></td>
                     </tr>
                   </s:iterator>
                 </table></td>

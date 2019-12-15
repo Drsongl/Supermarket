@@ -11,16 +11,30 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductAdd extends ActionSupport {
+public class WorkerUpdate extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private List<ProductBean> list;
-	public List<ProductBean> getList() {
-		return list;
+	private String Sno;
+	private ProductBean cnbean;
+
+	public String getSno() {
+		return Sno;
 	}
-	public void setList(List<ProductBean> list) {
-		this.list = list;
+
+	public void setSno(String sno) {
+		Sno = sno;
 	}
+
+	public WorkerBean getCnbean() {
+		return cnbean;
+	}
+
+	public void setCnbean(WorkerBean cnbean) {
+		this.cnbean = cnbean;
+	}
+
+
+
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
 		
@@ -38,9 +52,10 @@ public class ProductAdd extends ActionSupport {
 			out.print("<script language='javascript'>alert('请重新登录！');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-
 		
-	
+		
+		//查询
+		cnbean=new WorkerDao().GetBean(Integer.parseInt(Sno)); // we want a bean of particular sno
 		return SUCCESS;
 		
 	}

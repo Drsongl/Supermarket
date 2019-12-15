@@ -11,16 +11,16 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductDel extends ActionSupport {
+public class WorkerDel extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private int Pno ;
-	public int Pno() {
-		return Pno;
+	private  Sno ;
+	public String Sno() {
+		return Sno;
 	}
 
-	public void setPno(int pno) {
-		Pno = pno;
+	public void setSno(String sno) {
+		Sno = sno;
 	}
 
 	//处理用户请求的execute方法
@@ -43,10 +43,9 @@ public class ProductDel extends ActionSupport {
 		
 		
 		//删除
-		new ProductDao().Delete("Pno="+Pno);
+		new WorkerDao().Delete("Sno="+Sno);
 		    
 		return SUCCESS;
-		
 	}
 	
 	//判断是否空值

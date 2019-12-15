@@ -11,23 +11,22 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductAddSave extends ActionSupport {
+public class ProductUpdateSave extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private int Pno ;
+	private String Pno ;
     private String Pname ;
-    private float Sellprice ;
-    private int Vno ;
-	private String Vname ;
-	private int Lno ;
-	private String Lname ;
-	private int Shelfno ;
-
-
-	public int getPno() {
+	private String Sellprice ;
+	private String Vno ;
+    //private String Vname ;
+	private String Lno ;
+	//private String Lname ;
+	private String Shelfno ;
+	
+	public String getPno() {
 		return Pno;
 	}
-	public void setPno(int pno) {
+	public void setPno(String pno) {
 		Pno = pno;
 	}
 	public String getPname() {
@@ -36,44 +35,42 @@ public class ProductAddSave extends ActionSupport {
 	public void setPname(String pname) {
 		Pname = pname;
 	}
-	public float getSellprice() {
+	public String getSellprice() {
 		return Sellprice;
 	}
-	public void setSellprice(float sellprice) {
+	public void setSellprice(String sellprice) {
 		Sellprice = sellprice;
 	}	
-	public int getVno() {
+	public String getVno() {
 		return Vno;
 	}
-	public void setVno(int vno) {
+	public void setVno(String vno) {
 		Vno = vno;
 	}
-	public String getVname() {
+	/*public String getVname() {
 		return Vname;
 	}
 	public void setVname(String vname) {
 		Vname = vname;
-	}
-	public int getLno() {
+	}*/
+	public String getLno() {
 		return Lno;
 	}
-	public void setLno(int lno) {
+	public void setLno(String lno) {
 		Lno = lno;
 	}
-	public String getLname() {
+	/*public String getLname() {
 		return Lname;
 	}
 	public void setLname(String lname) {
 		Lname = lname;
-	}
-	public int getShelfno() {
+	}*/
+	public String getShelfno() {
 		return Shelfno;
 	}
-	public void setShelfno(int shelfno) {
+	public void setShelfno(String shelfno) {
 		Shelfno = shelfno;
 	}
-
-}
 
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
@@ -93,27 +90,27 @@ public class ProductAddSave extends ActionSupport {
 			out.flush();out.close();return null;
 		}
 		
-		//查询是否存在
-		List<ProductBean> list=new ProductDao().GetList("Pno="+Pno+" and Pname='"+Pname+"'", "");
+		//查询newname是否存在
+		List<ProductBean> list=new ProductDao().GetList("Pname='"+Pname+"' and Pno!="+Pno, "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('该商品编号或商品名称已存在！');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('该商品名称已存在！');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
-		//添加
+		//修改
+		
 		ProductBean cnbean=new ProductBean();
-		cnbean.setPno(Integer.parseInt(Pno));
+		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); //Pno 采用自增的方式，不具有实际意义
 		cnbean.setPname(Pname);
-		cnbean.setSellprice(Float.parseFloat(Sellprice))
+		cnbean.setSellprice(Float.parseFloat(Sellprice));
 		cnbean.setVno(Integer.parseInt(Vno));
-		cnbean.setVname(Vno);
 		cnbean.setLno(Integer.parseInt(Lno));
-		cnbean.setLname(Lname);
 		cnbean.setShelfno(Integer.parseInt(Shelfno));
-		new ProductDao().Add(cnbean);
+		cnbean.setStockout_n(Integer.parseInt(Stockout_n));
+		new ProductDao().Update(cnbean);
 		    
 		//跳转
-		out.print("<script language='javascript'>alert('添加成功！');window.location='ProductManager.action';</script>");
+		out.print("<script language='javascript'>alert('修改成功！');window.location='ProductManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}

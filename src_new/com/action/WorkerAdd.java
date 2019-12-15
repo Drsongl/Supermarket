@@ -11,34 +11,10 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class DomitoryUpdate extends ActionSupport {
+public class WorkerAdd extends ActionSupport {
 
-	//下面是Action内用于封装用户请求参数的属性
-	private String Domitory_ID;
-	private DomitoryBean cnbean;
-	public String getDomitory_ID() {
-		return Domitory_ID;
-	}
 
-	public void setDomitory_ID(String studentID) {
-		Domitory_ID = studentID;
-	}
-
-	public DomitoryBean getCnbean() {
-		return cnbean;
-	}
-
-	public void setCnbean(DomitoryBean cnbean) {
-		this.cnbean = cnbean;
-	}
-
-	private List<BuildingBean> list;
-	public List<BuildingBean> getList() {
-		return list;
-	}
-	public void setList(List<BuildingBean> list) {
-		this.list = list;
-	}
+	
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
 		
@@ -56,11 +32,7 @@ public class DomitoryUpdate extends ActionSupport {
 			out.print("<script language='javascript'>alert('请重新登录！');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-		
-		//查询所有楼宇
-		list=new BuildingDao().GetList("","Building_Name");
-		//查询
-		cnbean=new DomitoryDao().GetBean(Integer.parseInt(Domitory_ID));
+
 		return SUCCESS;
 		
 	}

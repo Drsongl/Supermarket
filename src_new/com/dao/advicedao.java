@@ -5,7 +5,8 @@ import java.util.*;
 import java.sql.*;
 
 public class AdviceDao {
-public AdviceBean GetList(Int ostatus){
+
+	public AdviceBean GetList1(final Int ostatus){
 		String sql="select Ono, Oname, Cno, Pno, 
         Ontime, Offtime, Ostatus, Sno from  Advice  
         where Ostatus="+ostatus;
@@ -42,7 +43,8 @@ public AdviceBean GetList(Int ostatus){
 		}
 		return list;
 	}
-public AdviceBean GetList(Date Ontime){
+
+	public AdviceBean GetList2(Date Ontime){
 		String sql="select Ono, Oname, Cno, Pno, 
         Ontime, Offtime, Ostatus, Sno from  Advice  
         where Ontime="+ontime;
@@ -79,7 +81,8 @@ public AdviceBean GetList(Date Ontime){
 		}
 		return list;
 	}
-public AdviceBean GetList(Date Offtime){
+
+	public AdviceBean GetList3(Date Offtime){
 		String sql="select Ono, Oname, Cno, Pno, 
         Ontime, Offtime, Ostatus, Sno from  Advice  
         where Offtime="+offtime;
@@ -116,7 +119,8 @@ public AdviceBean GetList(Date Offtime){
 		}
 		return list;
 	}
-	public AdviceBean GetBean(String Oname){
+
+	public AdviceBean GetBean(final String Oname){
 		String sql="select Ono, Oname, Cno, Pno, 
         Ontime, Offtime, Ostatus, Sno from  Advice  
         where Oname="+oname;
@@ -152,3 +156,49 @@ public AdviceBean GetList(Date Offtime){
 		}
 		return cnbean;
 	}
+
+	//修改
+	public void Update(AdviceBean cnbean){
+		String sql="update require_info set ";
+		sql+="Ono="+cnbean.getOno()+",";
+		sql+="Qname='"+cnbean.getOname()+”’,”;
+		sql+="Pno="+cnbean.getPno()+”,”;
+		sql+="Cno="+cnbean.getCno()+”,”;
+		sql+="Ontime='"+cnbean.getOntime()+”’,”;
+		sql+="Offtime='"+cnbean.getOfftime()+”’,”;
+		sql+="Sno="+cnbean.getSno()+”,”;
+		sql+="Ostatus="+cnbean.getOstatus();	
+		Statement stat = null;
+		ResultSet rs = null;
+		Connection conn = new DBHelper().getConn();
+		try{
+			stat = conn.createStatement();
+			stat.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (stat != null)
+					stat.close();
+				if (rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//判断是否空值
+	private boolean isInvalid(String value) {
+		return (value == null || value.length() == 0);
+	}
+	
+	//测试
+	public static void main(String[] args) {
+		System.out.println("");
+	}
+	
+}
+
