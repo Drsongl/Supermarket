@@ -46,6 +46,16 @@
 		  	<result name="success" type="chain">WorkerManager</result>
 		</action>
 
+		<!--Storage Management-->
+		<action name="StorageManager" class="com.action.StorageManager">
+			<result name="success">/StorageManager.jsp</result>
+		</action>
+		<action name="StorageUpdate" class="com.action.StorageUpdate">
+		    <result name="success">/StorageUpdate.jsp</result>
+		</action>
+		<action name="StorageUpdateSave" class="com.action.StorageUpdateSave">
+		</action>
+
 
 
 
