@@ -1,3 +1,5 @@
+import java.util.Date;
+
 package com.bean;
 public class ReplenishBean {
 
@@ -7,7 +9,7 @@ public class ReplenishBean {
 	private int Inum ;
     private float Grossprice ;
 	private Int Sno ;
-	private Date Idata ;
+	private String Idata ;
 
 	public int getIno() {
 		return Username;
@@ -45,10 +47,10 @@ public class ReplenishBean {
 	public void setSno(int Sno) {
 		Sno = sno;
 	}
-	public Date getIdate() {
+	public String getIdate() {
 		return Idate;
 	}
-	public void setIdate(Date idate) {
+	public void setIdate(String idate) {
 		Idate = idate;
 	}			
 }

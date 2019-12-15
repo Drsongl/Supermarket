@@ -66,6 +66,15 @@
 		<action name="AdviceUpdateSave" class="com.action.AdviceUpdateSave">
 		</action>
 
+		<!--Replenish Management-->
+		<action name="WorkerManager" class="com.action.WorkerManager">
+			<result name="success">/WorkerManager.jsp</result>
+		</action>
+		<action name="WorkerAdd" class="com.action.WorkerAdd">
+			<result name="success">/WorkerAdd.jsp</result>
+		</action>
+		<action name="WorkerAddSave" class="com.action.WorkerAddSave">
+		</action>
 
 
 

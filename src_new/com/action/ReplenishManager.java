@@ -11,42 +11,30 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductAddSave extends ActionSupport {
+public class ReplenishManager extends ActionSupport {
 
 	//下面是Action内用于封装用户请求参数的属性
-	private Stirng Sno ;
-    private String Sname ;
-    private String Sgrade ;
-    private String Sjob ;
-
-
-
-	public String getSno() {
-		return Sno;
+	private List<ReplenishBean> list;
+	public List<ReplenishBean> getList() {
+		return list;
 	}
-	public void setSno(int sno) {
-		Sno = sno;
+	public void setList(List<ReplenishBean> list) {
+		this.list = list;
 	}
-	public String getSname() {
-		return Sname;
+	private String SearchRow;
+	private String SearchKey;
+	public String getSearchRow() {
+		return SearchRow;
 	}
-	public void setSname(String sname) {
-		Sname = sname;
+	public void setSearchRow(String searchRow) {
+		SearchRow = searchRow;
 	}
-	public String getSgrade() {
-		return Sgrade;
+	public String getSearchKey() {
+		return SearchKey;
 	}
-	public void setSgrade(String sgrade) {
-		Sgrade = sgrade;
-	}	
-	public String getSjob() {
-		return Sjob;
+	public void setSearchKey(String searchKey) {
+		SearchKey = searchKey;
 	}
-	public void setSjob(String sjob) {
-		Sjob = sjob;
-	}
-
-}
 
 	//处理用户请求的execute方法
 	public String execute() throws Exception {
@@ -65,26 +53,17 @@ public class ProductAddSave extends ActionSupport {
 			out.print("<script language='javascript'>alert('请重新登录！');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-		
-		//查询是否存在
-		List<ProductBean> list=new WorkerDao().GetList("Sno="+Sno+"", "");
-		if(list.size()>0)
+		//查询条件
+		String strWhere="1=1";
+		if(!(isInvalid(SearchKey)))
 		{
-			out.print("<script language='javascript'>alert('该员工学号已存在！');history.back(-1);</script>");
-			out.flush();out.close();return null;
+			strWhere+=" and "+SearchRow+"='"+SearchKey+"'";
 		}
-		//添加
-		WorkerBean cnbean=new WorkerBean();
-		cnbean.setSno(Integer.parseInt(Sno));
-		cnbean.setSname(Sname);
-		cnbean.setSgrade(Float.parseFloat(Sgrade))
-		cnbean.setSjob(Sjob);
-
-		new WorkerDao().Add(cnbean);
-		    
-		//跳转
-		out.print("<script language='javascript'>alert('添加成功！');window.location='WorkerManager.action';</script>");
-		out.flush();out.close();return null;
+		
+		//查询所有
+		list=new ReplenishDao().GetList(strWhere,"Ino"); // join many basic relations, and we need to order by Ino in descent way.
+	
+		return SUCCESS;
 		
 	}
 	

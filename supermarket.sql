@@ -14,14 +14,14 @@ CREATE TABLE supplier(
     -- 供应商信息表
     -- supplier information 'provider'
     -- since we have all-storage, we should have a Prono & Proname for all-storage
-    Prono int PRIMARY KEY,--数据字典中没有定义           供应商编号
+    Prono int identity(1,1) PRIMARY KEY,--数据字典中没有定义           供应商编号
     Proname char(12) not NULL, --数据字典没有定义        供应商名称
 );
 
 CREATE TABLE product_info(
     -- 商品信息表
     -- I add Vno, Vname, Lno, Lname
-    Pno int PRIMARY KEY,   --                           商品编号
+    Pno int identity(1,1) PRIMARY KEY,   --                           商品编号
     Pname char(30) not NULL unique,  --                 商品名称
     Sellprice NUMERIC(4,2) not NULL,  --                售价
     Vno int not NULL,  --                               大类编号
@@ -37,9 +37,9 @@ CREATE TABLE product_info(
 */
 CREATE TABLE producttree(
     -- 商品分类树 
-    Vno int not NULL,                                               -- 商品大类编号
+    Vno int identity(1,1) not NULL,                                               -- 商品大类编号
     Vname char(20) not NULL,                                        -- 商品大类名称
-    Lno int not NULL,                                               -- 商品小类编号
+    Lno int identity(1,1) not NULL,                                               -- 商品小类编号
     Lname char(20) not NULL,                                        -- 商品小类名称
     PRIMARY KEY (Vno, Lno),
 );
@@ -47,7 +47,7 @@ CREATE TABLE producttree(
 CREATE TABLE replenish(
     -- 供应信息表
     -- I delete selfno, add Inum(input product number), 
-    Ino int PRIMARY KEY,                                                                -- 进货编号
+    Ino int identity(1,1) PRIMARY KEY,                                                                -- 进货编号
     Prono int foreign key references supplier(Prono),                                   -- 供应商编号
     Pno int foreign key references product_info(Pno),                                   -- 商品编号
     Inum int not NULL,-- 新增的属性，数据字典中无                                           -- 一次进货的数量
@@ -67,7 +67,7 @@ CREATE TABLE storage(
 
 CREATE TABLE customer_info (
     -- 消费者信息表
-    Cno int PRIMARY KEY, -- 消费者编号
+    Cno int PRIMARY KEY, -- 消费者编号，学号
     Cgrade smallint not NULL, -- 消费者的年级
     Cname char(16) not NULL, -- 消费者姓名
     Cgender smallint not NULL, -- 消费者性别
@@ -75,7 +75,7 @@ CREATE TABLE customer_info (
 
 CREATE TABLE worker_info(
     -- 工作人员信息表
-    Sno int PRIMARY KEY, -- 员工编号
+    Sno int PRIMARY KEY, -- 员工编号，学号
     Sjob char(4) not NULL, -- 数据字典中无 -- 员工职位
     Sgrade smallint not NULL, -- 员工年级
     Sname char(16) not NULL, -- 员工姓名
@@ -84,7 +84,7 @@ CREATE TABLE worker_info(
 
 CREATE TABLE traffic_info (
     -- 交易数据 transaction data
-    Tno int PRIMARY KEY,
+    Tno int identity(1,1) PRIMARY KEY,
     Ttime date not NULL,
     Gno int not NULL,
     Pno int unique not NULL foreign key references general.product_info(Pno),
@@ -94,7 +94,7 @@ CREATE TABLE traffic_info (
 
 CREATE TABLE require_info (
     -- 消费者建议
-    Ono int PRIMARY KEY,
+    Ono int identity(1,1) PRIMARY KEY,
     Cno int not NULL foreign key references customer_info(Cno),
     Oname char(50) not NULL,
     Ontime date not NULL,
@@ -105,7 +105,7 @@ CREATE TABLE require_info (
 
 CREATE TABLE shelf(
     -- 货架信息表
-    Shelfno int PRIMARY KEY,
+    Shelfno int identity(1,1) PRIMARY KEY,
     Vno int not NULL,
     Shelfloc char(10), --数据字典中无
     Sno int foreign key references worker_info(Sno),

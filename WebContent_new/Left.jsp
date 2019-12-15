@@ -20,23 +20,38 @@
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ProductManager.action">商品信息管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="WorkerManager.action">员工信息管理</a></td>
                 </tr>
+                <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="StorageManager.action">商品库存管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceManager.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SupplyManager.action">供应商信息管理</a></td>
-                </tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SaleManager.action">销量管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ReplenishManager.action">进货信息管理</a></td>
                 </tr>
+                <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <%}%>
 
 
@@ -47,23 +62,38 @@
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ProductWorker.action">商品信息管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="WorkerWorker.action">员工信息管理</a></td>
                 </tr>
+                <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="StorageWorker.action">商品库存管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceWorker.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SupplyWorker.action">供应商信息管理</a></td>
-                </tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SaleWorker.action">销量管理</a></td>
                 </tr>
                 <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
+                <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ReplenishWorker.action">进货信息管理</a></td>
                 </tr>
+                <tr>
+                    <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
+                  </tr>
                 <%}%>
 
 
