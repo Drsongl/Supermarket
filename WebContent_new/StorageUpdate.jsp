@@ -16,18 +16,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function mycheck(){
-   if(isNull(form1.Sname.value)){  
-   alert("请输入员工姓名！"); 
+   if(isNull(form1.Quantity.value)){  
+   alert("请输入新的库存数量！"); 
    return false;
    }
-   if(isNull(form1.Sgrade.value)){
-   alert("请输入员工年级！");
-   return false;
-   }
-   if(isNull(form1.Sjob.value)){
-   alert("请选择员工职位！");
-   return false;
-   }
+   
 }
 
 function isNull(str){

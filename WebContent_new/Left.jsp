@@ -26,7 +26,7 @@
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="StorageManager.action">商品库存管理</a></td>
                 </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ConsumerManager.action">消费者意见管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceManager.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SupplyManager.action">供应商信息管理</a></td>
@@ -53,7 +53,7 @@
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="StorageWorker.action">商品库存管理</a></td>
                 </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ConsumerWorker.action">消费者意见管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceWorker.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SupplyWorker.action">供应商信息管理</a></td>
