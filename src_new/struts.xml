@@ -76,6 +76,12 @@
 		<action name="ReplenishAddSave" class="com.action.ReplenishAddSave">
 		</action>
 
+		<!--Sale Management-->
+		<action name="SaleManager" class="com.action.SaleManager">
+			<result name="success">/SaleManager.jsp</result>
+		</action>
+		
+
 
 
 

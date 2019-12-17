@@ -83,13 +83,13 @@
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                   </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SaleWorker.action">销量管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="SaleManager.action">销量管理</a></td>
                 </tr>
                 <tr>
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                   </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ReplenishWorker.action">进货信息管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="ReplenishManager.action">进货信息管理</a></td>
                 </tr>
                 <tr>
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
@@ -123,15 +123,16 @@
                 <tr>
                   <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                 </tr>
+                
+
+                <%}%>
+
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="personalInfo.action">个人信息</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="UserInfo.action">用户信息更改</a></td>
                 </tr>
                 <tr>
                   <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                 </tr>
-
-                <%}%>
-
                 
                 <tr>
                   <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="Quit.action" onclick="return confirm('确定要退出系统吗？')">退出系统</a></td>
