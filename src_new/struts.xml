@@ -80,6 +80,13 @@
 		<action name="SaleManager" class="com.action.SaleManager">
 			<result name="success">/SaleManager.jsp</result>
 		</action>
+
+		<!--User Management-->
+		<action name="UserUpdate" class="com.action.UserUpdate">
+			<result name="success">/UserUpdate.jsp</result>
+		</action>
+		<action name="UserUpdateSave" class="com.action.UserUpdateSave">
+		</action>
 		
 
 

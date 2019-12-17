@@ -5,9 +5,11 @@ USE supermarket;
 
 CREATE TABLE user_info(
     -- 用户信息表，包括用户名，密码，用户类型
-    Username int PRIMARY KEY,--数据字典中没有定义       用户名
+    Uno int identity(1,1) PRIMARY KEY,
+    Username varchar(12) not NULL,--数据字典中没有定义   用户名
     "Password" char(12) not NULL, --数据字典没有定义    密码
-    User_type char(2) not NULL --数据字典中没有定义     用户类型
+    Cno int UNIQUE,
+    "Type" char(2) not NULL --数据字典中没有定义     用户类型
 );
 
 CREATE TABLE supplier(
