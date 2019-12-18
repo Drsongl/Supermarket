@@ -59,7 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td bgcolor="#D5E4F4"><strong>解决时间</strong></td>
                     <td bgcolor="#D5E4F4"><strong>建议状态</strong></td>
                     <td bgcolor="#D5E4F4"><strong>负责员工编号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>操作</strong></td>
                   </tr>
                   <s:iterator id="aa" value="list">
                     <tr align="center">
@@ -71,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Ostate}</td>
                       <td align="center">${Sno}</td>
                       
-                      <td align="center"><a href="AdviceUpdate.action?Ono=${Ono}">更新状态</a> </td>
+                      
                     </tr>
                   </s:iterator>
                 </table></td>

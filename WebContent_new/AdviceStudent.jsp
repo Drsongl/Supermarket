@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <form name="form1" method="post" action="AdviceManager.action">
                   <table width="100%%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td width="22%" height="30" style="padding-left:20px;"> 功能导航： </td>
+                      <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="AdviceAdd.action?Ono=${Ono}">新增建议</a> </td>
                       <td width="78%">查询：
                         <select name="SearchRow" id="SearchRow">
                     
@@ -59,7 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td bgcolor="#D5E4F4"><strong>解决时间</strong></td>
                     <td bgcolor="#D5E4F4"><strong>建议状态</strong></td>
                     <td bgcolor="#D5E4F4"><strong>负责员工编号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>操作</strong></td>
                   </tr>
                   <s:iterator id="aa" value="list">
                     <tr align="center">
@@ -71,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Ostate}</td>
                       <td align="center">${Sno}</td>
                       
-                      <td align="center"><a href="AdviceUpdate.action?Ono=${Ono}">更新状态</a> </td>
+                      
                     </tr>
                   </s:iterator>
                 </table></td>
