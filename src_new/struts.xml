@@ -87,8 +87,27 @@
 		</action>
 		<action name="UserUpdateSave" class="com.action.UserUpdateSave">
 		</action>
-		
 
+
+		<!--product Worker + student-->
+		<action name="ProductWorker" class="com.action.ProductWorker">
+			<result name="success">/ProductWorker.jsp</result>
+		</action>
+		
+		<!--Storage Worker + student-->
+		<action name="StorageWorker" class="com.action.StorageWorker">
+			<result name="success">/StorageWorker.jsp</result>
+		</action>
+
+		<!--Replenish Worker-->
+		<action name="ReplenishWorker" class="com.action.ReplenishWorker">
+			<result name="success">/ReplenishWorker.jsp</result>
+		</action>
+		<action name="ReplenishUpdate" class="com.action.ReplenishUpdate">
+			<result name="success">/ReplenishUpdate.jsp</result>
+		</action>
+		<action name="ReplenishUpdateSave" class="com.action.ReplenishUpdateSave">
+		</action>
 
 
 
