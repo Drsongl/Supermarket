@@ -8,7 +8,7 @@ public class ProductDao {
 
 	//获取列表
 	public List<ProductBean> GetList0(String strwhere,String strorder){
-		String sql="select Pno, Pname, Sellprice, Vno, Vname, Lno, Lname, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where	product_info.shelfno =  shelf.shelfno";
+		String sql="select Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where product_info.shelfno =  shelf.shelfno";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" where "+strwhere;
@@ -32,8 +32,6 @@ public class ProductDao {
 				cnbean.setLno(rs.getInt("Lno"));
 				cnbean.setShelfno(rs.getInt("Shelfno"));
 				cnbean.setPname(rs.getString("Pname"));
-				cnbean.setVname(rs.getString("Vname"));
-				cnbean.setLname(rs.getString("Lname"));
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {
@@ -55,7 +53,7 @@ public class ProductDao {
 
 	//获取指定Pno的实体Bean
 	public ProductBean GetBean(int Pno){
-		String sql="select Pno, Pname, Sellprice, Vno, Vname, Lno, Lname, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where	product_info.shelfno =  shelf.shelfno and Pno="+Pno;
+		String sql="select Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where product_info.shelfno =  shelf.shelfno and Pno="+Pno;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -63,6 +61,12 @@ public class ProductDao {
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setPno(rs.getInt("Pno"));
+				cnbean.setSellprice(rs.getInt("Sellprice"));
+				cnbean.setVno(rs.getInt("Vno"));
+				cnbean.setLno(rs.getInt("Lno"));
+				cnbean.setShelfno(rs.getInt("Shelfno"));
+				cnbean.setPname(rs.getString("Pname"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -77,16 +81,17 @@ public class ProductDao {
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}
 
 	//添加
-	public void Add(ProductBean cnbean ShelfBean cmbean){
+	public void Add(ProductBean cnbean, ShelfBean cmbean){
 		String sql="insert into product_info and shelf (";
-		sql+="Pno, Pname, Sellprice, Vno, Vname, Lno, Lname, shelf.Shelfno, shelf.Shelfloc";
+		sql+="Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc";
 		sql+=") values(";
-		sql+=cnbean.getPno()+",’"+cnbean.getPname()+”’,”+cnbean.getSellprice()+","+cnbean.getVno()+”,’”+cnbean.getVname()+”’,”+cnbean.getLno()+”,’”+cnbean.getLname()+”’,”+cmbean.getShelfno()+”,’”+cmbean.getShelfloc()+”’”;
+		sql+=cnbean.getPno()+",'"+cnbean.getPname()+"',"+cnbean.getSellprice()+","+cnbean.getVno()+","+cnbean.getLno()+","+cmbean.getShelfno()+",'"+cmbean.getShelfloc()+"'";
 		sql+=")";
-		sql+=“where product_info.shelfno =  shelf.shelfno”;
+		sql+="where product_info.shelfno =  shelf.shelfno";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -109,18 +114,16 @@ public class ProductDao {
 		}
 	}
 	//修改
-	public void Update(ProductBean cnbean ShelfBean cmbean){
+	public void Update(ProductBean cnbean, ShelfBean cmbean){
 		String sql="update product_info and shelf set ";
-		sql+="Pno='"+cnbean.getPno()+"',";
+		sql+="Pno="+cnbean.getPno()+",";
 		sql+="Pname='"+cnbean.getPname()+"',";
-		sql+="Sellprice='"+cnbean.getSellprice()+"',";
-		sql+="Vno='"+cnbean.getVno()+"',";
-		sql+="Vname='"+cnbean.getVname()+”’,”;
-		sql+="Lno='"+cnbean.getLno()+"',";
-		sql+="Lname='"+cnbean.getLname()+”’,”;
-		sql+="shelf.Shelfno='"+cmbean.getShelfno()+"',";
+		sql+="Sellprice="+cnbean.getSellprice()+",";
+		sql+="Vno="+cnbean.getVno()+",";
+		sql+="Lno="+cnbean.getLno()+",";
+		sql+="shelf.Shelfno="+cmbean.getShelfno()+",";
 		sql+="shelf.Shelfloc='"+cmbean.getShelloc()+"'";		
-		sql+="where product_info.shelfno =  shelf.shelfno";
+		sql+="where product_info.Shelfno =  shelf.Shelfno";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();

@@ -7,8 +7,7 @@ import java.sql.*;
 public class SupplierDao {
 
 public SupplierBean Getbean1(Int Prono){
-		String sql="select * from Supplier where
-		Prono="+Prono;
+		String sql="select * from supplier where Prono="+Prono;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -16,6 +15,8 @@ public SupplierBean Getbean1(Int Prono){
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setProno(rs.getInt("Prono"));
+			cnbean.setProname(rs.getString("Proname"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -30,11 +31,11 @@ public SupplierBean Getbean1(Int Prono){
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}
 
 public SupplierBean Getbean2(String Proname){
-		String sql="select * from Supplier where
-		Proname="+proname;
+		String sql="select * from supplier where Proname='"+Proname+"'";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -42,6 +43,8 @@ public SupplierBean Getbean2(String Proname){
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setProno(rs.getInt("Prono"));
+			cnbean.setProname(rs.getString("Proname"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -56,4 +59,5 @@ public SupplierBean Getbean2(String Proname){
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}

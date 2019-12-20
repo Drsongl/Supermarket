@@ -9,7 +9,7 @@ public class customer_AdviceDao {
 
 		//获取列表
 	public List<AdviceBean> GetList(String strwhere,String strorder){
-		String sql="select Ono, Oname, Cno, Ontime, Offtime, Ostatus, Sno from  Advice";
+		String sql="select Ono, Oname, Cno, Ontime, Offtime, Ostatus, Sno from  require_info";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" where "+strwhere;
@@ -27,12 +27,13 @@ public class customer_AdviceDao {
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
 				AdviceBean cnbean=new AdviceBean();
-				cnbean.setOno(rs.getInt("ono"));
-				cnbean.setOname(rs.getString("oname"));
-				cnbean.setCno(rs.getInt("cno"));
-				cnbean.setOntime(rs.getDate("ontime"));
-				cnbean.setOfftime(rs.getDate("offtime"));
-				cnbean.setOstatus(rs.int("ostatus"));
+				cnbean.setOno(rs.getInt("Ono"));
+				cnbean.setOname(rs.getString("Oname"));
+				cnbean.setCno(rs.getInt("Cno"));
+				cnbean.setSno(rs.getInt("Sno"));
+				cnbean.setOntime(rs.getDate("Ontime"));
+				cnbean.setOfftime(rs.getDate("Offtime"));
+				cnbean.setOstatus(rs.getint("Ostatus"));
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {

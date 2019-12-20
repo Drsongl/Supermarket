@@ -7,10 +7,7 @@ import java.sql.*;
 public class ReplenishDao {
 	
 	public List<ReplenishBean> GetList(String strwhere,String strorder){
-		String sql="select Ino, Proname, Pname, Vname, 
-        Lname, Grossprice, Sno, Idate from  Replenish,  
-        Product, Supplier where Product.Pno=Replenish.Pno 
-        and Product.Prono = Supplier.Prono ";
+		String sql="select Ino, Proname, Pname, Vno, Lno, Grossprice, Sno, Idate from  replenish, product_info, supplier where product_info.Pno=replenish.Pno and replenish.Prono = supplier.Prono ";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" where "+strwhere;
@@ -27,13 +24,14 @@ public class ReplenishDao {
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
-				cnbean.setIno(rs.getInt("ino"));
-				cnbean.setProname(rs.getstring("proname"));
-				cnbean.setPname(rs.getString("pname"));
-				cnbean.setVname(rs.getString("vname"));
-				cnbean.setLname(rs.getString("lname"));
-				cnbean.setSno(rs.getInt("sno"));
-				cnbean.setIdate(rs.getDate("idate"));
+				cnbean.setIno(rs.getInt("Ino"));
+				cnbean.setProname(rs.getstring("Proname"));
+				cnbean.setPname(rs.getString("Pname"));
+				cnbean.setVno(rs.getInt("Vno"));
+				cnbean.setGrossprice(rs.getInt("Grossprice"));
+				cnbean.setLno(rs.getInt("Lno"));
+				cnbean.setSno(rs.getInt("Sno"));
+				cnbean.setIdate(rs.getDate("Idate"));
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {
@@ -56,10 +54,10 @@ public class ReplenishDao {
 
 //添加进货
 	public void Add(ReplenishBean cnbean){
-		String sql="insert into Replenish (";
+		String sql="insert into replenish (";
 		sql+="Ino,Prono,Pno,Inum,Grossprice,Sno,Idate";
 		sql+=") values(";
-		sql+=cnbean.getIno()+","+cnbean.getProno()+","+cnbean.getPno()+","+cnbean.getInum()+","+cnbean.getGrossprice()+","+cnbean.getSno()+",'"cnbean.getIdate()+"'";
+		sql+=cnbean.getIno()+","+cnbean.getProno()+","+cnbean.getPno()+","+cnbean.getInum()+","+cnbean.getGrossprice()+","+cnbean.getSno()+",'"+cnbean.getIdate()+"'";
 		sql+=")";
 		Statement stat = null;
 		ResultSet rs = null;

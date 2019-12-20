@@ -8,7 +8,7 @@ public class ReplenishDao {
 	
 	//获取列表
 	public List<StorageBean> GetList(String strwhere,String strorder){
-		String sql="select Pno, Quantity, Stockout_Flag from storage";
+		String sql="select Pno, Quantity, Pname from storage";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" where "+strwhere;
@@ -27,7 +27,7 @@ public class ReplenishDao {
 			while(rs.next()){
 				StorageBean cnbean=new StorageBean();
 				cnbean.setPno(rs.getInt("Pno"));
-            	cnbean.setAllquantity(rs.getInt("Allquantity"));
+            	cnbean.setQuantity(rs.getInt("Quantity"));
 				cnbean.setPname(rs.getString("Pname"));
 				list.add(cnbean);
 			}
@@ -53,7 +53,7 @@ public class ReplenishDao {
 		String sql="update storage set ";
 		sql+="Pno="+cnbean.getPno()+",";
 		sql+="Pname='"+cnbean.getPname()+"',";
-		sql+="Allquantity="+cnbean.getAllquantity()+”,”;
+		sql+="Quantity="+cnbean.getQuantity()+",";
 		//sql+="Stockout_Flag="+cnbean.getStockout_Flag();	
 		Statement stat = null;
 		ResultSet rs = null;

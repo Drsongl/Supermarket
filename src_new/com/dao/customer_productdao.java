@@ -28,11 +28,11 @@ public class customer_ProductDao {
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
 				ProductBean cnbean=new ProductBean();
-				cnbean.setPno(rs.getInt("pno"));
-				cnbean.setPname(rs.getString("pname"));o
-				cnbean.setSellprice(rs.getString("sellprice"));
-				cnbean.setShelfno(rs.getInt("shelfno"));
-				cnbean.setShelfloc(rs.getString("shelfloc"));			
+				cnbean.setPno(rs.getInt("Pno"));
+				cnbean.setPname(rs.getString("Pname"));
+				cnbean.setSellprice(rs.getInt("Sellprice"));
+				cnbean.setShelfno(rs.getInt("Shelfno"));
+				cnbean.setShelfloc(rs.getString("Shelfloc"));			
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {

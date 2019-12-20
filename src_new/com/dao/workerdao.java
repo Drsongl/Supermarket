@@ -50,8 +50,7 @@ public class WorkerDao {
 	}
 
 	public WorkerBean Getbean1(String Sname){
-		String sql="select * from Worker where
-		Sname="+Sname;
+		String sql="select * from worker_info where Sname='"+Sname+"'";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -59,6 +58,10 @@ public class WorkerDao {
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setSno(rs.getInt("Sno"));
+			cnbean.setSno(rs.getInt("Sgrade"));
+			cnbean.setSjob(rs.getString("Sjob"));
+			cnbean.setSname(rs.getString("Sname"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -73,12 +76,12 @@ public class WorkerDao {
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}
 
 
 	public WorkerBean Getbean2(int Sno){
-		String sql="select * from Worker where
-		Sno="+Sno;
+		String sql="select * from worker_info where Sno="+Sno;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -86,6 +89,10 @@ public class WorkerDao {
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setSno(rs.getInt("Sno"));
+			cnbean.setSno(rs.getInt("Sgrade"));
+			cnbean.setSjob(rs.getString("Sjob"));
+			cnbean.setSname(rs.getString("Sname"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -100,16 +107,17 @@ public class WorkerDao {
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}
 
 
 //修改个人信息
 	public void Update(WorkerBean cnbean){
-		String sql="update Worker set ";
+		String sql="update worker_info set ";
 		sql+="Sjob='"+cnbean.getSjob()+"',";
 		sql+="Sgrade="+cnbean.getSgrade()+",";
 		sql+="Sname='"+cnbean.getSname()+"',";
-		sql+="where Sno="+cnbean.getSno();
+		sql+="Sno="+cnbean.getSno();
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -137,7 +145,7 @@ public class WorkerDao {
 		String sql="update worker_info set ";
 		sql+="Sno="+cnbean.getSno()+",";
 		sql+="Sname='"+cnbean.getSname()+"',";
-		sql+="Sgrade="+cnbean.getSgrade()+”,”;
+		sql+="Sgrade="+cnbean.getSgrade()+",";
 		sql+="Sjob='"+cnbean.getSjob()+"'";
 		Statement stat = null;
 		ResultSet rs = null;

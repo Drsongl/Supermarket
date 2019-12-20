@@ -8,7 +8,7 @@ public class AdviceDao {
 
 	//获取列表
 	public List<AdviceBean> GetList(String strwhere,String strorder){
-		String sql="select Ono, Oname, Pno, Cno, Ontime, Offtime, Sno, Ostatus from require_info";
+		String sql="select Ono, Oname, Cno, Ontime, Offtime, Sno, Ostatus from require_info";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" where "+strwhere;
@@ -28,11 +28,11 @@ public class AdviceDao {
 				AdviceBean cnbean=new AdviceBean();
 				cnbean.setOno(rs.getInt("Ono"));
 				cnbean.setCno(rs.getInt("Cno"));
-				cnbean.setPno(rs.getInt("Pno"));
 				cnbean.setSno(rs.getInt("Sno"));
 				cnbean.setOname(rs.getString("Oname"));
 				cnbean.setOntime(rs.getDate("Ontime"));
 				cnbean.setOfftime(rs.getDate("Offtime"));
+				cnbean.setOstatus(rs.getint("Ostatus"));				
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {
@@ -52,10 +52,8 @@ public class AdviceDao {
 		return list;
 	}
 
-	public AdviceBean GetBean(final String Oname){
-		String sql="select Ono, Oname, Cno, Pno, 
-        Ontime, Offtime, Ostatus, Sno from  Advice  
-        where Oname="+oname;
+	public AdviceBean GetBean(String Oname){
+		String sql="select Ono, Oname, Cno, Ontime, Offtime, Ostatus, Sno from  require_info  where Oname='"+Oname+"'";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -63,6 +61,13 @@ public class AdviceDao {
 		try{
 			stat = conn.createStatement();
 			stat.executeUpdate(sql);
+			cnbean.setOno(rs.getInt("Ono"));
+			cnbean.setCno(rs.getInt("Cno"));
+			cnbean.setSno(rs.getInt("Sno"));
+			cnbean.setOname(rs.getString("Oname"));
+			cnbean.setOntime(rs.getDate("Ontime"));
+			cnbean.setOfftime(rs.getDate("Offtime"));
+			cnbean.setOstatus(rs.getint("Ostatus"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -77,18 +82,18 @@ public class AdviceDao {
 				e.printStackTrace();
 			}
 		}
+		return cnbean;
 	}
 
 	//修改
 	public void Update(AdviceBean cnbean){
 		String sql="update require_info set ";
 		sql+="Ono="+cnbean.getOno()+",";
-		sql+="Qname='"+cnbean.getOname()+”’,”;
-		sql+="Pno="+cnbean.getPno()+”,”;
-		sql+="Cno="+cnbean.getCno()+”,”;
-		sql+="Ontime='"+cnbean.getOntime()+”’,”;
-		sql+="Offtime='"+cnbean.getOfftime()+”’,”;
-		sql+="Sno="+cnbean.getSno()+”,”;
+		sql+="Oname='"+cnbean.getOname()+"',";
+		sql+="Cno="+cnbean.getCno()+",";
+		sql+="Ontime='"+cnbean.getOntime()+"',";
+		sql+="Offtime='"+cnbean.getOfftime()+"',";
+		sql+="Sno="+cnbean.getSno()+",";
 		sql+="Ostatus="+cnbean.getOstatus();	
 		Statement stat = null;
 		ResultSet rs = null;
