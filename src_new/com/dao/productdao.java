@@ -7,7 +7,7 @@ import java.sql.*;
 public class ProductDao {
 
 	//获取列表
-	public List<ProductBean> GetList0(String strwhere,String strorder){
+	public List<ProductBean> GetList(String strwhere,String strorder){
 		String sql="select Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where product_info.shelfno =  shelf.shelfno";
 		if(!(isInvalid(strwhere)))
 		{
