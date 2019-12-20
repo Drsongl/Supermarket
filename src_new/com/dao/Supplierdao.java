@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class SupplierDao {
 
-public SupplierBean Getbean(Int Prono){
+public SupplierBean Getbean1(Int Prono){
 		String sql="select * from Supplier where
 		Prono="+Prono;
 		Statement stat = null;
@@ -15,11 +15,7 @@ public SupplierBean Getbean(Int Prono){
 		SupplierBean cnbean=new SupplierBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeQuery(sql);
-			while(rs.next()){
-				cnbean.setProno(rs.getInt("prono"));
-				cnbean.setProname(rs.getstring("proname"));
-			}
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -34,10 +30,9 @@ public SupplierBean Getbean(Int Prono){
 				e.printStackTrace();
 			}
 		}
-		return cnbean;
 	}
 
-public SupplierBean Getbean(String Proname){
+public SupplierBean Getbean2(String Proname){
 		String sql="select * from Supplier where
 		Proname="+proname;
 		Statement stat = null;
@@ -46,11 +41,7 @@ public SupplierBean Getbean(String Proname){
 		SupplierBean cnbean=new SupplierBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeQuery(sql);
-			while(rs.next()){
-				cnbean.setProno(rs.getInt("prono"));
-				cnbean.setProname(rs.getstring("proname"));
-			}
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -65,5 +56,4 @@ public SupplierBean Getbean(String Proname){
 				e.printStackTrace();
 			}
 		}
-		return cnbean;
 	}
