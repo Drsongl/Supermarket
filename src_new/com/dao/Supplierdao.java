@@ -14,7 +14,7 @@ public SupplierBean Getbean1(Int Prono){
 		SupplierBean cnbean=new SupplierBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setProno(rs.getInt("Prono"));
 			cnbean.setProname(rs.getString("Proname"));
 		} catch (SQLException e) {
@@ -42,7 +42,7 @@ public SupplierBean Getbean2(String Proname){
 		SupplierBean cnbean=new SupplierBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setProno(rs.getInt("Prono"));
 			cnbean.setProname(rs.getString("Proname"));
 		} catch (SQLException e) {

@@ -60,7 +60,7 @@ public class AdviceDao {
 		AdviceBean cnbean=new AdviceBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setOno(rs.getInt("Ono"));
 			cnbean.setCno(rs.getInt("Cno"));
 			cnbean.setSno(rs.getInt("Sno"));

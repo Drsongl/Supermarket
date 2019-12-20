@@ -57,7 +57,7 @@ public class WorkerDao {
 		WorkerBean cnbean=new WorkerBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setSno(rs.getInt("Sno"));
 			cnbean.setSno(rs.getInt("Sgrade"));
 			cnbean.setSjob(rs.getString("Sjob"));
@@ -88,7 +88,7 @@ public class WorkerDao {
 		WorkerBean cnbean=new WorkerBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setSno(rs.getInt("Sno"));
 			cnbean.setSno(rs.getInt("Sgrade"));
 			cnbean.setSjob(rs.getString("Sjob"));
@@ -123,7 +123,7 @@ public class WorkerDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -152,7 +152,7 @@ public class WorkerDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -178,7 +178,7 @@ public class WorkerDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

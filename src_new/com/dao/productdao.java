@@ -60,7 +60,7 @@ public class ProductDao {
 		ProductBean cnbean=new ProductBean();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 			cnbean.setPno(rs.getInt("Pno"));
 				cnbean.setSellprice(rs.getInt("Sellprice"));
 				cnbean.setVno(rs.getInt("Vno"));
@@ -97,7 +97,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -129,7 +129,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -154,7 +154,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

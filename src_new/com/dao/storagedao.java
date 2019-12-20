@@ -60,7 +60,7 @@ public class ReplenishDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			stat.executeUpdate(sql);
+			rs = stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
