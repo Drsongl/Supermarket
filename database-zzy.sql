@@ -100,7 +100,7 @@ CREATE TABLE require_info (
     Cno int not NULL foreign key references customer_info(Cno),
     Oname char(50) not NULL,
     Ontime date not NULL,
-    Offtime date not NULL,
+    Offtime date,
     Ostatus smallint not NULL,
     Sno int foreign key references worker_info(Sno),
 );
@@ -165,3 +165,14 @@ VALUES (1,11,163072)
 INSERT
 INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
 VALUES (1,1,200,2.2,163072,'2019-12-20')
+
+----traffic
+INSERT 
+INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
+VALUES ('2019-12-20',123,1,163071,163072)
+
+----require
+INSERT 
+INTO require_info(Oname,Ontime,Ostatus,Offtime,Cno,Sno)
+VALUES ('QQ糖口味太少','2019-12-19',1,'2019-12-21',163071,163073)
+
