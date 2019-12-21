@@ -7,9 +7,9 @@ CREATE TABLE user_info(
     -- 用户信息表，包括用户名，密码，用户类型
     Uno int identity(1,1) PRIMARY KEY,
     Username varchar(12) not NULL,--数据字典中没有定义   用户名
-    "Password" char(12) not NULL, --数据字典没有定义    密码
+    "Password" varchar(12) not NULL, --数据字典没有定义    密码
     Cno int UNIQUE,
-    "Type" int not NULL --数据字典中没有定义     用户类型
+    "Type" varchar(2) not NULL --数据字典中没有定义     用户类型
 );
 
 CREATE TABLE supplier(
@@ -17,14 +17,14 @@ CREATE TABLE supplier(
     -- supplier information 'provider'
     -- since we have all-storage, we should have a Prono & Proname for all-storage
     Prono int identity(1,1) PRIMARY KEY,--数据字典中没有定义           供应商编号
-    Proname char(12) not NULL, --数据字典没有定义        供应商名称
+    Proname varchar(12) not NULL, --数据字典没有定义        供应商名称
 );
 
 CREATE TABLE product_info(
     -- 商品信息表
     -- I add Vno, Vname, Lno, Lname
     Pno int identity(1,1) PRIMARY KEY,   --                           商品编号
-    Pname char(30) not NULL unique,  --                 商品名称
+    Pname varchar(30) not NULL unique,  --                 商品名称
     Sellprice NUMERIC(4,2) not NULL,  --                售价
     Vno int not NULL,  --                               大类编号
     Lno int not NULL,  --                               小类编号
@@ -40,10 +40,9 @@ CREATE TABLE product_info(
 CREATE TABLE producttree(
     -- 商品分类树 
     Vno int identity(1,1) not NULL,                                               -- 商品大类编号
-    Vname char(20) not NULL,                                        -- 商品大类名称
-    Lno int identity(1,1) not NULL,                                               -- 商品小类编号
-    Lname char(20) not NULL,                                        -- 商品小类名称
-    PRIMARY KEY (Vno,Lno)
+    Vname varchar(20) not NULL,                                        -- 商品大类名称
+    Lno int identity(1,1) PRIMARY KEY,                                               -- 商品小类编号
+    Lname varchar(20) not NULL,                                        -- 商品小类名称
 );
 
 CREATE TABLE replenish(
@@ -62,7 +61,7 @@ CREATE TABLE replenish(
 CREATE TABLE storage(
     -- 总仓库库存表
     Pno int PRIMARY KEY, -- 商品编号
-    Pname char(30) not NULL unique, -- 商品名称
+    Pname varchar(30) not NULL unique, -- 商品名称
     Quantity int not NULL, -- 商品库存数量
     
 );
@@ -71,16 +70,16 @@ CREATE TABLE customer_info (
     -- 消费者信息表
     Cno int PRIMARY KEY, -- 消费者编号，学号
     Cgrade smallint not NULL, -- 消费者的年级
-    Cname char(16) not NULL, -- 消费者姓名
+    Cname varchar(16) not NULL, -- 消费者姓名
     Cgender smallint not NULL, -- 消费者性别
 );
 
 CREATE TABLE worker_info(
     -- 工作人员信息表
     Sno int PRIMARY KEY, -- 员工编号，学号
-    Sjob char(4) not NULL, -- 数据字典中无 -- 员工职位
+    Sjob varchar(4) not NULL, -- 数据字典中无 -- 员工职位
     Sgrade smallint not NULL, -- 员工年级
-    Sname char(16) not NULL, -- 员工姓名
+    Sname varchar(16) not NULL, -- 员工姓名
 );
 
 
@@ -98,7 +97,7 @@ CREATE TABLE require_info (
     -- 消费者建议
     Ono int identity(1,1) PRIMARY KEY,
     Cno int not NULL foreign key references customer_info(Cno),
-    Oname char(50) not NULL,
+    Oname varchar(50) not NULL,
     Ontime date not NULL,
     Offtime date,
     Ostatus smallint not NULL,
@@ -109,7 +108,7 @@ CREATE TABLE shelf(
     -- 货架信息表
     Shelfno int identity(1,1) PRIMARY KEY,
     Vno int not NULL,
-    Shelfloc char(10), --数据字典中无
+    Shelfloc varchar(10), --数据字典中无
     Sno int foreign key references worker_info(Sno),
 );
 
