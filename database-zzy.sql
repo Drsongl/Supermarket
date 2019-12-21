@@ -9,7 +9,7 @@ CREATE TABLE user_info(
     Username varchar(12) not NULL,--数据字典中没有定义   用户名
     "Password" char(12) not NULL, --数据字典没有定义    密码
     Cno int UNIQUE,
-    "Type" char(2) not NULL --数据字典中没有定义     用户类型
+    "Type" int not NULL --数据字典中没有定义     用户类型
 );
 
 CREATE TABLE supplier(
