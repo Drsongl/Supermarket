@@ -5,10 +5,12 @@ public class ProductBean {
     private String Pname ;
 	private float Sellprice ;
 	private int Vno ;
-    //private String Vname ;
+    private String Vname ;
 	private int Lno ;
-	//private String Lname ;
+	private String Lname ;
 	private int Shelfno ;
+	private String Shelfloc ;
+	private int Stockout_n ;
 	
 	public int getPno() {
 		return Pno;
@@ -34,29 +36,41 @@ public class ProductBean {
 	public void setVno(int vno) {
 		Vno = vno;
 	}
-	/*public String getVname() {
+	public String getVname() {
 		return Vname;
 	}
 	public void setVname(String vname) {
 		Vname = vname;
-	}*/
+	}
 	public int getLno() {
 		return Lno;
 	}
 	public void setLno(int lno) {
 		Lno = lno;
 	}
-	/*public String getLname() {
+	public String getLname() {
 		return Lname;
 	}
 	public void setLname(String lname) {
 		Lname = lname;
-	}*/
+	}
 	public int getShelfno() {
 		return Shelfno;
 	}
 	public void setShelfno(int shelfno) {
 		Shelfno = shelfno;
+	}
+	public String getShelfno() {
+		return Shelfno;
+	}
+	public void setShelfno(String shelfno) {
+		Shelfno = shelfno;
+	}
+	public int getStockout_n() {
+		return Stockout_n;
+	}
+	public void setStockout_n(int stockout_n) {
+		Stockout_n = stockout_n;
 	}
 
 }

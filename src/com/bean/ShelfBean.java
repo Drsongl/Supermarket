@@ -1,10 +1,10 @@
 package com.bean;
 public class ShelfBean {
 
-    private int Username ;
-    private int Password ;
-	private String Usertype ;
-	private int Password ;
+    private int Shelfno ;
+    private int Vno ;
+	private String Shelfloc ;
+	private int Sno ;
 	
 	public int getShelfno() {
 		return Shelfno;

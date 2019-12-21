@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>学生超市管理系统</title>
+    <title>校园超市管理系统</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="Style/Style.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <center>
   <table width="900" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">学生超市管理系统</td>
+      <td height="60" bgcolor="#E6F5FF" style="color:#06F; font-size:19px; font-weight:bolder; padding-left:50px;">校园超市管理系统</td>
     </tr>
     <tr>
       <td height="30" background="Images/MenuBg.jpg">&nbsp;</td>
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             <tr>
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
-                <form name="form1" method="post" action="DomitoryManager.action">
+                <form name="form1" method="post" action="ProductManager.action">
                   <table width="100%%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="ProductAdd.action">添加商品</a></td>
@@ -60,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td bgcolor="#D5E4F4"><strong>小类名称</strong></td>
                     <td bgcolor="#D5E4F4"><strong>商品最低库存量</strong></td>
                     <td bgcolor="#D5E4F4"><strong>货架编号</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>货架位置</strong></td>
                     <td bgcolor="#D5E4F4"><strong>操作</strong></td>
 
                   </tr>
@@ -74,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Lname}</td>
                       <td align="center">${Stockout_n}</td>
                       <td align="center">${Shelfno}</td>
+                      <td align="center">${Shelfloc}</td>
                       <td align="center"><a href="ProductUpdate.action?Pno=${Pno}">修改</a> <a href="ProductDel.action?Pno=${Pno}" onClick="return confirm('确定要删除该产品吗？')">删除</a></td>
                     </tr>
                   </s:iterator>

@@ -39,7 +39,7 @@ public class ProductAdd extends ActionSupport {
 			out.flush();out.close();return null;
 		}
 		// 获得商品树表
-		list=new ProducttreeDao().GetList("","Vno");
+		list=new ProductDao().GetTreeList("","Vno");
 
 		return SUCCESS;
 		

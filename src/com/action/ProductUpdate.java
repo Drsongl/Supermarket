@@ -61,7 +61,7 @@ public class ProductUpdate extends ActionSupport {
 		}
 		
 		//查询所有商品大类名称 Vname
-		list=new ProducttreeDao().GetList("","Vname"); // here we want get a list of all product tree vnames
+		list=new ProductDao().GetTreeList("","Vname"); // here we want get a list of all product tree vnames
 		//查询
 		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); // we want a bean of particular pno
 		return SUCCESS;

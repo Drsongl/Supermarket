@@ -100,16 +100,29 @@ public class ProductAddSave extends ActionSupport {
 			out.print("<script language='javascript'>alert('该商品名称已存在！');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
+		//查询货架编号是否存在
+		List<ShelfBean> list=new ProductDao().GetShelfList("Shelfno="+Shelfno, "");
+		if(list.size()==0)
+		{
+			out.print("<script language='javascript'>alert('该货架不存在！');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
+		if(Integer.parseInt(Stockout_n)<0 )
+		{
+			out.print("<script language='javascript'>alert('请输入正的商品最低库存量！');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
+
 		//添加
 		ProductBean cnbean=new ProductBean();
-		//cnbean.setPno(Integer.parseInt(Pno));
+		
 		cnbean.setPname(Pname);
 		cnbean.setSellprice(Float.parseFloat(Sellprice))
 		cnbean.setVno(Integer.parseInt(Vno));
-		//cnbean.setVname(Vname);
 		cnbean.setLno(Integer.parseInt(Lno));
-		//cnbean.setLname(Lname);
 		cnbean.setShelfno(Integer.parseInt(Shelfno));
+		cnbean.setStockout_n(Integer.parseInt(Stockout_n));
+
 		new ProductDao().Add(cnbean);
 		    
 		//跳转

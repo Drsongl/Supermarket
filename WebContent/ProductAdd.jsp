@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>学生超市管理系统</title>
+    <title>校园超市管理系统</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="Style/Style.css" rel="stylesheet" type="text/css" />
@@ -117,11 +117,13 @@ return re.test(str);
                         </s:iterator>
                       </select></td>
                     </tr>
-                      
-
                     <tr>
                       <td height="30" align="right"><span style="color:red;">*</span>货架编号：</td>
                       <td><input name="Shelfno" type="text" class="text2" id="Shelfno"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="right"><span style="color:red;">*</span>商品最低库存量：</td>
+                      <td><input name="Stockout_n" type="text" class="text2" id="Stockout_n"></td>
                     </tr>
                     <tr>
                       <td height="30">&nbsp;</td>
