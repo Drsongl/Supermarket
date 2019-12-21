@@ -116,6 +116,35 @@ public class AdviceDao {
 			}
 		}
 	}
+	/* add  */ 
+	public void Add(AdviceBean cnbean){
+		String sql="insert into product_info and shelf (";
+		sql+="Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc";
+		sql+=") values(";
+		sql+=cnbean.getPno()+",'"+cnbean.getPname()+"',"+cnbean.getSellprice()+","+cnbean.getVno()+","+cnbean.getLno()+","+cmbean.getShelfno()+",'"+cmbean.getShelfloc()+"'";
+		sql+=")";
+		sql+="where product_info.shelfno =  shelf.shelfno";
+		Statement stat = null;
+		ResultSet rs = null;
+		Connection conn = new DBHelper().getConn();
+		try{
+			stat = conn.createStatement();
+			stat.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (stat != null)
+					stat.close();
+				if (rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	//判断是否空值
 	private boolean isInvalid(String value) {
