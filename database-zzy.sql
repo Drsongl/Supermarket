@@ -123,19 +123,29 @@ insert
 into supplier(Proname)
 values ('统一')
 
+insert 
+into supplier(Proname)
+values ('光明')
+
+insert 
+into supplier(Proname)
+values ('乐事')
 ----product
 insert 
 into product_info(Pname,Sellprice,Vno,Lno,Shelfno,Stockout_n)
-values ('QQ糖',4,1,7,11,300)
+values ('QQ糖',4,1,7,7,300)
+
+insert 
+into product_info(Pname,Sellprice,Vno,Lno,Shelfno,Stockout_n)
+values ('原味薯片70g',5,1,5,6,40)
 
 insert 
 into product_info(Pname,Sellprice,Vno,Lno,Shelfno,Stockout_n)
 values ('冰红茶',3.5,2,2,5,80)
 
-----storage
 insert 
-into storage(Pname,Pno,Quantity)
-values ('QQ糖',1,330)
+into product_info(Pname,Sellprice,Vno,Lno,Shelfno,Stockout_n)
+values ('鲜牛奶500ml',7,2,3,2,10)
 
 ----customer
 insert 
@@ -149,29 +159,104 @@ values (173071,'辛希办',3,2)
 ----worker
 insert 
 into worker_info(Sno,Sname,Sgrade,Sjob)
-values (163072,'谢程',4,'员工')
+values (163072,'谢程',4,'理货员')
+
+insert 
+into worker_info(Sno,Sname,Sgrade,Sjob)
+values (183071,'王员工',2,'理货员')
 
 insert 
 into worker_info(Sno,Sname,Sgrade,Sjob)
 values (163073,'焦武初',4,'经理')
 
+insert 
+into worker_info(Sno,Sname,Sgrade,Sjob)
+values (173073,'马超市',3,'收银员')
+
+----storage
+insert 
+into storage(Pname,Pno,Quantity)
+values ('QQ糖',1,398)
+
+insert 
+into storage(Pname,Pno,Quantity)
+values ('冰红茶',2,99)
+
+insert 
+into storage(Pname,Pno,Quantity)
+values ('鲜牛奶500ml',3,19)
+
+insert 
+into storage(Pname,Pno,Quantity)
+values ('原味薯片70g',4,50)
+
 ----shelf
 INSERT
 INTO shelf(Vno,Shelfloc,Sno)
-VALUES (1,11,163072)
+VALUES (1,1,163072)
 
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (2,5,163072)
+
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (3,3,163072)
+
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (4,4,183071)
+
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (5,6,183071)
+
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (5,7,183071)
+
+INSERT
+INTO shelf(Vno,Shelfloc,Sno)
+VALUES (1,8,163072)
 ----replenish
 INSERT
 INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
-VALUES (1,1,200,2.2,163072,'2019-12-20')
+VALUES (1,1,400,2.2,163072,'2019-12-20')
+
+INSERT
+INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
+VALUES (2,3,100,3,163072,'2019-12-20')
+
+INSERT
+INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
+VALUES (3,4,20,5.8,163072,'2019-12-20')
+
+INSERT
+INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
+VALUES (4,2,50,3.2,163072,'2019-12-20')
 
 ----traffic
 INSERT 
 INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
-VALUES ('2019-12-20',123,1,163071,163072)
+VALUES ('2019-12-20',123,1,163071,173073)
 
+INSERT 
+INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
+VALUES ('2019-12-20',123,1,163071,173073)
+
+INSERT 
+INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
+VALUES ('2019-12-20',123,3,163071,173073)
+
+INSERT 
+INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
+VALUES ('2019-12-20',124,4,173071,173073)
 ----require
 INSERT 
 INTO require_info(Oname,Ontime,Ostatus,Offtime,Cno,Sno)
 VALUES ('QQ糖口味太少','2019-12-19',1,'2019-12-21',163071,163073)
+
+INSERT 
+INTO require_info(Oname,Ontime,Ostatus,Offtime,Cno,Sno)
+VALUES ('想买当天的鲜牛奶','2019-12-20',1,'2019-12-21',173071,163073)
 
