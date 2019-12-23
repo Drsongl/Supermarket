@@ -77,7 +77,7 @@ CREATE TABLE customer_info (
 CREATE TABLE worker_info(
     -- 工作人员信息表
     Sno int PRIMARY KEY, -- 员工编号，学号
-    Sjob varchar(4) not NULL, -- 数据字典中无 -- 员工职位
+    Sjob varchar(6) not NULL, -- 数据字典中无 -- 员工职位
     Sgrade smallint not NULL, -- 员工年级
     Sname varchar(16) not NULL, -- 员工姓名
 );
