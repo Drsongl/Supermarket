@@ -209,11 +209,11 @@ VALUES (4,4,183071)
 
 INSERT
 INTO shelf(Vno,Shelfloc,Sno)
-VALUES (5,6,183071)
+VALUES (2,6,183071)
 
 INSERT
 INTO shelf(Vno,Shelfloc,Sno)
-VALUES (5,7,183071)
+VALUES (1,7,183071)
 
 INSERT
 INTO shelf(Vno,Shelfloc,Sno)
