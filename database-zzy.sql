@@ -86,7 +86,7 @@ CREATE TABLE worker_info(
 CREATE TABLE traffic_info (
     -- 交易数据 transaction data
     Tno int identity(1,1) PRIMARY KEY,
-    Ttime date not NULL,
+    Ttime datetime not NULL,
     Gno int not NULL,
     Pno int unique not NULL foreign key references product_info(Pno),
     Cno int unique not NULL foreign key references customer_info(Cno),
