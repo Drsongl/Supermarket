@@ -88,9 +88,9 @@ CREATE TABLE traffic_info (
     Tno int identity(1,1) PRIMARY KEY,
     Ttime datetime not NULL,
     Gno int not NULL,
-    Pno int unique not NULL foreign key references product_info(Pno),
-    Cno int unique not NULL foreign key references customer_info(Cno),
-    Sno int unique not NULL foreign key references worker_info(sno),
+    Pno int not NULL foreign key references product_info(Pno),
+    Cno int not NULL foreign key references customer_info(Cno),
+    Sno int not NULL foreign key references worker_info(sno),
 );
 
 CREATE TABLE require_info (
