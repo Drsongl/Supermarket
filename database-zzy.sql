@@ -41,7 +41,7 @@ CREATE TABLE producttree(
     -- 商品分类树 
     Vno int identity(1,1) not NULL,                                               -- 商品大类编号
     Vname varchar(20) not NULL,                                        -- 商品大类名称
-    Lno int identity(1,1) PRIMARY KEY,                                               -- 商品小类编号
+    Lno int PRIMARY KEY,                                               -- 商品小类编号
     Lname varchar(20) not NULL,                                        -- 商品小类名称
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE replenish(
 
 
 CREATE TABLE storage(
-    -- 总仓库库存表
+    -- 仓库库存表
     Pno int PRIMARY KEY, -- 商品编号
     Pname varchar(30) not NULL unique, -- 商品名称
     Quantity int not NULL, -- 商品库存数量
@@ -218,6 +218,7 @@ VALUES (1,7,183071)
 INSERT
 INTO shelf(Vno,Shelfloc,Sno)
 VALUES (1,8,163072)
+
 ----replenish
 INSERT
 INTO replenish(Prono,Pno,Inum,Grossprice,Sno,Idate)
@@ -251,6 +252,7 @@ VALUES ('2019-12-20',123,3,163071,173073)
 INSERT 
 INTO traffic_info(Ttime,Gno,Pno,Cno,Sno)
 VALUES ('2019-12-20',124,4,173071,173073)
+
 ----require
 INSERT 
 INTO require_info(Oname,Ontime,Ostatus,Offtime,Cno,Sno)
@@ -260,3 +262,19 @@ INSERT
 INTO require_info(Oname,Ontime,Ostatus,Offtime,Cno,Sno)
 VALUES ('想买当天的鲜牛奶','2019-12-20',1,'2019-12-21',173071,163073)
 
+----producttree
+INSERT
+INTO producttree(Vno, Vname, Lno, Lname)
+VALUES (1,'食品',7,'糖果')
+
+INSERT
+INTO producttree(Vno, Vname, Lno, Lname)
+VALUES (1,'食品',5,'膨化食品')
+
+INSERT
+INTO producttree(Vno, Vname, Lno, Lname)
+VALUES (2,'饮料',2,'茶')
+
+INSERT
+INTO producttree(Vno, Vname, Lno, Lname)
+VALUES (2,'饮料',3,'牛奶')
