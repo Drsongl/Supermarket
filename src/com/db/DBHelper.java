@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DBHelper {	
 	private String dbClassName = "net.sourceforge.jtds.jdbc.Driver";
-	private String dbUrl="jdbc:jtds:sqlserver://localhost:1433/" + "supermarket2;SelectMethod = Cursor";
+	private String dbUrl="jdbc:jtds:sqlserver://localhost:1433/" + "supermarket;SelectMethod = Cursor";
 	private String dbUser="sa";
 	private String dbPassword="123456";
 //	private String second=null;
