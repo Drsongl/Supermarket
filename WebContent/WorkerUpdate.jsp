@@ -62,8 +62,12 @@ return re.test(str);
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE"><form name="form1" method="post" action="WorkerUpdateSave.action" onSubmit="return mycheck()" >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td width="67%"><input name="Sno" type="text" class="noshow" id="Sno" value="<s:property value='cnbean.Sno'/>"></td>
+                      <td width="33%" height="30" align="right">&nbsp;</td>
+                      <td width="67%">&nbsp;</td>
+                    </tr>
+                  <tr>
+                    <td height="30" align="right">员工学号：</td>
+                    <td><input name="Sno" type="text" readonly="readonly" id="Sno" value="<s:property value='cnbean.Sno'/>"></td>
                   </tr>
                   <tr>
                     <td height="30" align="right"><span style="color:red;">*</span>员工姓名：</td>

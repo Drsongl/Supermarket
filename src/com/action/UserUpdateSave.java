@@ -11,19 +11,19 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductUpdateSave extends ActionSupport {
+public class UserUpdateSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊýµÄÊôÐÔ
-	private String Uno ;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String Cno ;
     private String Username ;
 	private String Password ;
 	
 	
-	public String getUno() {
-		return Uno;
+	public String getCno() {
+		return Cno;
 	}
-	public void setUno(String uno) {
-		uno = uno;
+	public void setCno(String cno) {
+		Cno = cno;
 	}
 	public String getUsername() {
 		return Username;
@@ -39,44 +39,44 @@ public class ProductUpdateSave extends ActionSupport {
 	}	
 	
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕý³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØÐÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
 		
-		//ÐÞ¸Ä
+		//ï¿½Þ¸ï¿½
 		UserBean cnbean=new UserBean();
-		cnbean=new UserDao().GetBean(Integer.parseInt(Uno)); 
-		cnbean.setUsername(Pname);
+		cnbean=new UserDao().GetBean(Cno); 
+		cnbean.setUsername(Username);
 		cnbean.setPassword(Password);
 		new UserDao().Update(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('ÐÞ¸Ä³É¹¦£¡');window.location='index.jsp';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('ï¿½Þ¸Ä³É¹ï¿½ï¿½ï¿½');window.location='index.jsp';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅÐ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

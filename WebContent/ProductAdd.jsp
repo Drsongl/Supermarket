@@ -97,7 +97,7 @@ return re.test(str);
                       <td height="30" align="right"><span style="color:red;">*</span>商品大类名称：</td>
                       <td><select name="Vno" id="Vno">
                         <option value="">请选择</option>
-                        <s:iterator id="aa" value="list"> <!--here list should be producttreebean-->
+                        <s:iterator id="aa" value="list1"> <!--here list should be producttreebean-->
                           <option value="${Vno}">${Vname}</option>
                         </s:iterator>
                       </select></td>
@@ -110,9 +110,9 @@ return re.test(str);
 
                     <tr>
                       <td height="30" align="right"><span style="color:red;">*</span>商品小类名称：</td>
-                      <td><select name="Lname" id="Lname">
+                      <td><select name="Lno" id="Lno">
                         <option value="">请选择</option>
-                        <s:iterator id="aa" value="list"> <!--here list should be producttreebean-->
+                        <s:iterator id="aa" value="list2"> <!--here list should be producttreebean-->
                         <option value="${Lno}">${Lname}</option>
                         </s:iterator>
                       </select></td>

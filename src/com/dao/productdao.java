@@ -30,11 +30,11 @@ public class ProductDao {
 				cnbean.setPname(rs.getString("Pname"));
 				cnbean.setSellprice(rs.getFloat("Sellprice"));
 				cnbean.setVno(rs.getInt("Vno"));
-				cnbean.setVname(rs.getString("Vno"));
+				cnbean.setVname(rs.getString("Vname"));
 				cnbean.setLno(rs.getInt("Lno"));
-				cnbean.setLname(rs.getString("Lno"));
+				cnbean.setLname(rs.getString("Lname"));
 				cnbean.setShelfno(rs.getInt("Shelfno"));
-				cnbean.setShelfloc(rs.getString("Shelfno"));
+				cnbean.setShelfloc(rs.getString("Shelfloc"));
 				cnbean.setStockout_n(rs.getInt("Stockout_n"));
 				list.add(cnbean);
 			}
@@ -56,8 +56,8 @@ public class ProductDao {
 	}
 	
 	//获得商品树
-	public List<ProductBean> GetTreeList(String strwhere,String strorder){
-		String sql="select * from producttree where 1=1";
+	public List<ProductBean> GetTreeVnameList(String strwhere,String strorder){
+		String sql="select distinct Vname, Vno from producttree where 1=1";
 		if(!(isInvalid(strwhere)))
 		{
 			sql+=" and "+strwhere;
@@ -77,9 +77,8 @@ public class ProductDao {
 				ProductBean cnbean=new ProductBean();
 				
 				cnbean.setVno(rs.getInt("Vno"));
-				cnbean.setVname(rs.getString("Vno"));
-				cnbean.setLno(rs.getInt("Lno"));
-				cnbean.setLname(rs.getString("Lno"));
+				cnbean.setVname(rs.getString("Vname"));
+				
 				
 				list.add(cnbean);
 			}
@@ -100,6 +99,50 @@ public class ProductDao {
 		return list;
 	}
 
+	public List<ProductBean> GetTreeLnameList(String strwhere,String strorder){
+		String sql="select distinct Lname, Lno from producttree where 1=1";
+		if(!(isInvalid(strwhere)))
+		{
+			sql+=" and "+strwhere;
+		}
+		if(!(isInvalid(strorder)))
+		{
+			sql+=" order by "+strorder;
+		}
+		Statement stat = null;
+		ResultSet rs = null;
+		Connection conn = new DBHelper().getConn();
+		List<ProductBean> list=new ArrayList<ProductBean>();
+		try{
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			while(rs.next()){
+				ProductBean cnbean=new ProductBean();
+				
+			
+				cnbean.setLno(rs.getInt("Lno"));
+				cnbean.setLname(rs.getString("Lname"));
+				
+				list.add(cnbean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (stat != null)
+					stat.close();
+				if (rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	
 	//获得货架信息列表
 	public List<ShelfBean> GetShelfList(String strwhere,String strorder){
 		String sql="select * from shelf where 1=1";
@@ -147,20 +190,23 @@ public class ProductDao {
 
 	//获取指定Pno的实体Bean
 	public ProductBean GetBean(int Pno){
-		String sql="select Pno, Pname, Sellprice, Vno, Lno, shelf.Shelfno, shelf.Shelfloc from product_info, shelf where product_info.shelfno =  shelf.shelfno and Pno="+Pno;
+		String sql="select * from product_info where Pno="+Pno;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
 		ProductBean cnbean=new ProductBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			rs = stat.executeQuery(sql);
+			while(rs.next()) {
 			cnbean.setPno(rs.getInt("Pno"));
-				cnbean.setSellprice(rs.getInt("Sellprice"));
-				cnbean.setVno(rs.getInt("Vno"));
-				cnbean.setLno(rs.getInt("Lno"));
-				cnbean.setShelfno(rs.getInt("Shelfno"));
-				cnbean.setPname(rs.getString("Pname"));
+			cnbean.setSellprice(rs.getFloat("Sellprice"));
+			cnbean.setVno(rs.getInt("Vno"));
+			cnbean.setLno(rs.getInt("Lno"));
+			cnbean.setShelfno(rs.getInt("Shelfno"));
+			cnbean.setPname(rs.getString("Pname"));
+			cnbean.setStockout_n(rs.getInt("Stockout_n"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -183,7 +229,7 @@ public class ProductDao {
 		String sql="insert into product_info (";
 		sql+="Pname, Sellprice, Vno, Lno, Shelfno, Stockout_n";
 		sql+=") values(";
-		sql+="'"+cnbean.getPname()+"',"+cnbean.getSellprice()+","+cnbean.getVno()+","+cnbean.getLno()+","+cnbean.getShelfno()+",'"+cnbean.getStockout_n()+"'";
+		sql+="'"+cnbean.getPname()+"',"+cnbean.getSellprice()+","+cnbean.getVno()+","+cnbean.getLno()+","+cnbean.getShelfno()+","+cnbean.getStockout_n();
 		sql+=")";
 		
 		Statement stat = null;
@@ -191,7 +237,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -222,7 +268,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -247,7 +293,7 @@ public class ProductDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

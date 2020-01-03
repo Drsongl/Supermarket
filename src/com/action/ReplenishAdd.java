@@ -11,41 +11,56 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class WorkerAdd extends ActionSupport {
-
-
+public class ReplenishAdd extends ActionSupport {
 	
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	private List<SupplierBean> list1;
+	private List<ProductBean> list2;
+	public List<SupplierBean> getList1() {
+		return list1;
+	}
+	public void setList1(List<SupplierBean> list1) {
+		this.list1 = list1;
+	}
+	public List<ProductBean> getList2() {
+		return list2;
+	}
+	public void setList(List<ProductBean> list2) {
+		this.list2 = list2;
+	}
+	
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕý³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØÐÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-		//»ñµÃ
+		//ï¿½ï¿½ï¿½
+		
+		
 		list1=new SupplierDao().GetList("","Proname");
-		//»ñµÃ
+		//ï¿½ï¿½ï¿½
 		list2=new ProductDao().GetList("","Pname");
 		return SUCCESS;
 		
 	}
 	
-	//ÅÐ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

@@ -16,20 +16,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function mycheck(){
-   if(isNull(form1.Sno.value)){  
-   alert("需要填入员工学号！"); 
+   if(isNull(form1.Inum.value)){  
+   alert("需要填入进货数量！"); 
    return false;
    }
-   if(isNull(form1.Sname.value)){
-   alert("需要填入员工姓名！");
+   if(isNull(form1.Grossprice.value)){
+   alert("需要填入进货价！");
    return false;
    }
-   if(isNull(form1.Sgrade.value)){
-   alert("需要选择员工年级！");
+   if(isNull(form1.Sno.value)){
+   alert("需要填入员工学号！");
    return false;
    }
-   if(isNull(form1.Sjob.value)){
-   alert("需要选择员工职位！");
+   if(isNull(form1.Prono.value)){
+   alert("需要选择供应商！");
+   return false;
+   }
+   if(isNull(form1.Pname.value)){
+   alert("需要选择商品名称！");
    return false;
    }
 }
@@ -60,11 +64,11 @@ return re.test(str);
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">添加员工</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">新增进货</td>
             </tr>
             <tr>
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
-                <form name="form1" method="post" action="WorkerAddSave.action" onSubmit="return mycheck()" >
+                <form name="form1" method="post" action="ReplenishAddSave.action" onSubmit="return mycheck()" >
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="33%" height="30" align="right">&nbsp;</td>
@@ -100,14 +104,11 @@ return re.test(str);
                     </tr>
                     
                     <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>进货负责员工：</td>
+                      <td height="30" align="right"><span style="color:red;">*</span>进货负责员工学号：</td>
                       <td><input name="Sno" type="text" class="text2" id="Sno"></td>
                     </tr>
                 
-                    <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>进货日期：</td>
-                      <td><input name="Idate" type="text" class="text2" id="Idate"></td>
-                    </tr>
+                    
                     <tr>
                       <td height="30">&nbsp;</td>
                       <td><input type="submit" name="button" id="button" value="添加商品">

@@ -56,12 +56,16 @@ return re.test(str);
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品编码：</td>
-                    <td width="67%"><input name="Pno" type="text" disabled='disabled' id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
+                    
+                    <td width="67%"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>商品名称：</td>
-                    <td><input name="Pname" type="text" class="text2" disabled='disabled' id="Pname" value="<s:property value='cnbean.Pname'/>"></td>
+                  	<td height="30" align="right">商品编码：</td>
+                  	<td><input name="Pno" type="text" disabled="disabled" id="Pno" value="<s:property value='cnbean.Pno'/>"></td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">商品名称：</td>
+                    <td><input name="Pname" type="text" class="text2" disabled="disabled" id="Pname" value="<s:property value='cnbean.Pname'/>"></td>
                   </tr>
 
                   <tr>
@@ -72,8 +76,8 @@ return re.test(str);
                   
 
                   <tr>
-                      <td height="30" align="right"><span style="color:red;">*</span>商品预警量：</td>
-                      <td><input name="Stockout_n" type="text" class="text2" disabled='disabled' id="Stockout_n" value="<s:property value='cnbean.Stockout_n'/>"></td>
+                      <td height="30" align="right">商品预警量：</td>
+                      <td><input name="Stockout_n" type="text" class="text2" disabled="disabled" id="Stockout_n" value="<s:property value='cnbean.Stockout_n'/>"></td>
                   </tr>
                   
                 

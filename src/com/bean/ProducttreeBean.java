@@ -2,15 +2,15 @@ package com.bean;
 
 public class ProducttreeBean {
 
-    private Int Vno ;
+    private int Vno ;
     private String Vname;
-    private Int Lno ;
+    private int Lno ;
     private String Lname ;
 	
-	public Int getVno() {
+	public int getVno() {
 		return Vno;
 	}
-	public void setVno(String vno) {
+	public void setVno(int vno) {
 		Vno = vno;
 	}
 	public String getVname() {
@@ -19,10 +19,10 @@ public class ProducttreeBean {
 	public void setVname(String vname) {
 		Vname = vname;
     }
-    public Int getLno() {
+    public int getLno() {
 		return Lno;
 	}
-	public void setLno(String lno) {
+	public void setLno(int lno) {
 		Lno = lno;
 	}
 	public String getLname() {

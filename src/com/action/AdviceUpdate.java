@@ -13,9 +13,10 @@ import com.dao.*;
 
 public class AdviceUpdate extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String Ono;
 	private AdviceBean cnbean;
+	private List<WorkerBean> list;
 
 	public String getOno() {
 		return Ono;
@@ -32,40 +33,46 @@ public class AdviceUpdate extends ActionSupport {
 	public void setCnbean(AdviceBean cnbean) {
 		this.cnbean = cnbean;
 	}
+	public List<WorkerBean> getList() {
+		return list;
+	}
+	public void setList(List<WorkerBean> list) {
+		this.list = list;
+	}
 
 
-
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·ç™»å½•è´¦å·');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
 		
-		//²éÑ¯
-		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono)); 
+		//ï¿½ï¿½Ñ¯
+		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono));
+		list= new WorkerDao().GetList("1=1", "Sno");
 		return SUCCESS;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

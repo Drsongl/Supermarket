@@ -13,18 +13,18 @@ import com.dao.*;
 
 public class SaleManager extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
-	private List<ReplenishBean> list;
-	public List<ReplenishBean> getList() {
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private List<TrafficBean> list;
+	public List<TrafficBean> getList() {
 		return list;
 	}
-	public void setList(List<ReplenishBean> list) {
+	public void setList(List<TrafficBean> list) {
 		this.list = list;
 	}
 	private String SearchRow1;
 	private String SearchKey1;
 	public String getSearchRow1() {
-		return SearchRow;
+		return SearchRow1;
 	}
 	public void setSearchRow(String searchRow1) {
 		SearchRow1 = searchRow1;
@@ -51,30 +51,30 @@ public class SaleManager extends ActionSupport {
 		SearchKey2 = searchKey2;
 	}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
-		String id = new session.getAttribute("id")
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+		String id = (String) session.getAttribute("id");
 		if(id ==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-		//²éÑ¯Ìõ¼ş
-		String strWhere="1=1";
-
-		if(session.getAttribute("type")=='3'){
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
+		String strWhere=" 1=1 ";
+		String tt = (String) session.getAttribute("type");
+		if(tt =="3"){
 			
-			strwhere+=" and Cno="+id; 
+			strWhere+=" and Cno="+id; 
 			if(!(isInvalid(SearchKey1)))
 			{
 				strWhere+=" and "+SearchRow1+"='"+SearchKey1+"'";
@@ -99,19 +99,18 @@ public class SaleManager extends ActionSupport {
 		}
 		
 		
-		//²éÑ¯ËùÓĞ
-		list=new SaleDao().GetList(strWhere,"Ttime"); // here we need ÈıÕÅ±íµÄjoin£¬ÏúÊÛ±í£¬ÉÌÆ·ĞÅÏ¢±í£¨»ñµÃÉÌÆ·Ãû³Æ£©£¬ÉÌÆ·Ê÷±í£¨»ñµÃÉÌÆ·´óÀàĞ¡ÀàµÄÃû³Æ£©
-	
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
+		list=new SaleDao().GetList(strWhere,"Ttime"); 
 		return SUCCESS;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

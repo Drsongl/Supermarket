@@ -13,10 +13,11 @@ import com.dao.*;
 
 public class ProductUpdate extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String Pno;
 	private ProductBean cnbean;
-	private List<ProducttreeBean> list;
+	private List<ProductBean> list1;
+	private List<ProductBean> list2;
 
 	public String getPno() {
 		return Pno;
@@ -34,46 +35,53 @@ public class ProductUpdate extends ActionSupport {
 		this.cnbean = cnbean;
 	}
 	
-	public List<ProducttreeBean> getList() {
-		return list;
+	public List<ProductBean> getList1() {
+		return list1;
 	}
-	public void setList(List<ProducttreeBean> list) {
-		this.list = list;
+	public void setList1(List<ProductBean> list1) {
+		this.list1 = list1;
+	}
+	public List<ProductBean> getList2() {
+		return list2;
+	}
+	public void setList(List<ProductBean> list2) {
+		this.list2 = list2;
 	}
 
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
-		//²éÑ¯ËùÓĞÉÌÆ·´óÀàÃû³Æ Vname
-		list=new ProductDao().GetTreeList("","Vname"); // here we want get a list of all product tree vnames
-		//²éÑ¯
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Vname
+		list1=new ProductDao().GetTreeVnameList("","Vno"); // here we want get a list of all product tree vnames
+		list2=new ProductDao().GetTreeLnameList("","Lno");
+		//ï¿½ï¿½Ñ¯
 		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); // we want a bean of particular pno
 		return SUCCESS;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

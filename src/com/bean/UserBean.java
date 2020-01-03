@@ -4,6 +4,7 @@ public class UserBean {
     private String Username ;
     private String Password ;
     private String Type ;
+    private int Cno;
 	
 	public String getUsername() {
 		return Username;
@@ -22,5 +23,11 @@ public class UserBean {
 	}
 	public void setType(String type) {
 		Type = type;
-	}	
+	}
+	public int getCno() {
+		return Cno;
+	}
+	public void setCno(int cno) {
+		Cno = cno;
+	}
 }

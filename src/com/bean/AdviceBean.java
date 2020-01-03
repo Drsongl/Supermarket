@@ -1,4 +1,7 @@
 package com.bean;
+
+import java.util.Date;
+
 public class AdviceBean {
 
     private int Ono ;
@@ -17,7 +20,7 @@ public class AdviceBean {
 		Ono = ono;
 	}
 	public int getCno() {
-		return Ono;
+		return Cno;
 	}
 	public void setCno(int cno) {
 		Cno = cno;
@@ -47,9 +50,9 @@ public class AdviceBean {
 		Offtime = offtime;
 	}
 	public int getOstatus() {
-		return Onstatus;
+		return Ostatus;
 	}
-	public void setOnstatus(int ostatus) {
+	public void setOstatus(int ostatus) {
 		Ostatus = ostatus;
 	}
 	public int getSno() {

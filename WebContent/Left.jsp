@@ -35,7 +35,7 @@
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                   </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceWorker.action">消费者意见管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceManager.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
@@ -71,7 +71,7 @@
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
                   </tr>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceStudent.action">消费者意见管理</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceWorker.action">消费者意见管理</a></td>
                 </tr>
                 <tr>
                     <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>
@@ -94,7 +94,7 @@
                 
                 <%if(session.getAttribute("type").toString().equals("3")){%>
                 <tr>
-                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="Advice.action">消费者建议</a></td>
+                  <td height="30" align="center" background="Images/left2.jpg" style="text-align:left; padding-left:40px;"><a href="AdviceStudent.action">消费者建议</a></td>
                 </tr>
                 <tr>
                   <td height="5" align="center"><img src="Images/ic.gif" width="1" height="1"></td>

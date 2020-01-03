@@ -7,10 +7,10 @@ import java.sql.*;
 
 public class UserDao {
 	
-	//ÑéÖ¤µÇÂ¼
+	//ï¿½ï¿½Ö¤ï¿½ï¿½Â¼
 	public String CheckLogin(String username, String password, String Type){
 		String id = null;
-		String sql="select * from user_info where Username='"+username+"' and Password='"+password+"' and Type='"+type+"'";
+		String sql="select * from user_info where Username='"+username+"' and Password='"+password+"' and Type='"+Type+"'";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -24,7 +24,7 @@ public class UserDao {
 		catch(SQLException ex){}
 		return id;
 	}
-	//ÑéÖ¤ÃÜÂë
+	//ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
 	public boolean CheckPassword(String id, String password){
 		boolean ps = false;
 		String sql="select * from Admin where Admin_ID='"+id+"' and Admin_Password='"+password+"'";
@@ -41,68 +41,23 @@ public class UserDao {
 		catch(SQLException ex){}
 		return ps;
 	}
-	//»ñÈ¡ÁÐ±í
-	public List<AdminBean> GetList(String strwhere,String strorder){
-		String sql="select * from Admin";
-		if(!(isInvalid(strwhere)))
-		{
-			sql+=" where "+strwhere;
-		}
-		if(!(isInvalid(strorder)))
-		{
-			sql+=" order by "+strorder;
-		}
-		Statement stat = null;
-		ResultSet rs = null;
-		Connection conn = new DBHelper().getConn();
-		List<AdminBean> list=new ArrayList<AdminBean>();
-		try{
-			stat = conn.createStatement();
-			rs = stat.executeQuery(sql);
-			while(rs.next()){
-				AdminBean cnbean=new AdminBean();
-				cnbean.setAdmin_ID(rs.getInt("Admin_ID"));
-				cnbean.setAdmin_Username(rs.getString("Admin_Username"));
-				cnbean.setAdmin_Password(rs.getString("Admin_Password"));
-				cnbean.setAdmin_Name(rs.getString("Admin_Name"));
-				cnbean.setAdmin_Sex(rs.getString("Admin_Sex"));
-				cnbean.setAdmin_Tel(rs.getString("Admin_Tel"));
-				list.add(cnbean);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (stat != null)
-					stat.close();
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
+
 	
-	//»ñÈ¡Ö¸¶¨IDµÄÊµÌåBean
-	public AdminBean GetBean(int id){
-		String sql="select * from Admin where Admin_ID="+id;
+	//ï¿½ï¿½È¡Ö¸ï¿½ï¿½IDï¿½ï¿½Êµï¿½ï¿½Bean
+	public UserBean GetBean(String id){
+		String sql="select * from user_info where Cno="+id;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
-		AdminBean cnbean=new AdminBean();
+		UserBean cnbean=new UserBean();
 		try{
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
-				cnbean.setAdmin_ID(rs.getInt("Admin_ID"));
-				cnbean.setAdmin_Username(rs.getString("Admin_Username"));
-				cnbean.setAdmin_Password(rs.getString("Admin_Password"));
-				cnbean.setAdmin_Name(rs.getString("Admin_Name"));
-				cnbean.setAdmin_Sex(rs.getString("Admin_Sex"));
-				cnbean.setAdmin_Tel(rs.getString("Admin_Tel"));
+				cnbean.setCno(rs.getInt("Cno"));
+				cnbean.setUsername(rs.getString("Username"));
+				cnbean.setPassword(rs.getString("Password"));
+				cnbean.setType(rs.getString("Type"));
 				
 			}
 		} catch (SQLException e) {
@@ -122,44 +77,14 @@ public class UserDao {
 		return cnbean;
 	}
 	
-	//Ìí¼Ó
-	public void Add(AdminBean cnbean){
-		String sql="insert into Admin (";
-		sql+="Admin_Username,Admin_Password,Admin_Name,Admin_Sex,Admin_Tel";
-		sql+=") values(";
-		sql+="'"+cnbean.getAdmin_Username()+"','"+cnbean.getAdmin_Password()+"','"+cnbean.getAdmin_Name()+"','"+cnbean.getAdmin_Sex()+"','"+cnbean.getAdmin_Tel()+"'";
-		sql+=")";
-		Statement stat = null;
-		ResultSet rs = null;
-		Connection conn = new DBHelper().getConn();
-		try{
-			stat = conn.createStatement();
-			stat.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (stat != null)
-					stat.close();
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	//ÐÞ¸Ä
-	public void Update(AdminBean cnbean){
-		String sql="update Admin set ";
-		sql+="Admin_Username='"+cnbean.getAdmin_Username()+"',";
-		sql+="Admin_Password='"+cnbean.getAdmin_Password()+"',";
-		sql+="Admin_Name='"+cnbean.getAdmin_Name()+"',";
-		sql+="Admin_Sex='"+cnbean.getAdmin_Sex()+"',";
-		sql+="Admin_Tel='"+cnbean.getAdmin_Tel()+"'";
+
+	//ï¿½Þ¸ï¿½
+	public void Update(UserBean cnbean){
+		String sql="update user_info set ";
+		sql+="Username='"+cnbean.getUsername()+"',";
+		sql+="Password='"+cnbean.getPassword()+"',";
 		
-		sql+=" where Admin_ID='"+cnbean.getAdmin_ID()+"'";
+		sql+=" where Cno="+cnbean.getCno()+"";
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
@@ -181,9 +106,9 @@ public class UserDao {
 			}
 		}
 	}
-	//É¾³ý
+	//É¾ï¿½ï¿½
 	public void Delete(String strwhere){
-		String sql="delete Admin where ";
+		String sql="delete user_info where ";
 		sql+=strwhere;
 		Statement stat = null;
 		ResultSet rs = null;
@@ -208,12 +133,12 @@ public class UserDao {
 	}
 
 	
-	//ÅÐ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println("");
 	}

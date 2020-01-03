@@ -13,44 +13,53 @@ import com.dao.*;
 
 public class ProductAdd extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊýµÄÊôÐÔ
-	private List<ProducttreeBean> list;
-	public List<ProducttreeBean> getList() {
-		return list;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private List<ProductBean> list1;
+	public List<ProductBean> getList1() {
+		return list1;
 	}
-	public void setList(List<ProducttreeBean> list) {
-		this.list = list;
+	public void setList1(List<ProductBean> list1) {
+		this.list1 = list1;
 	}
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	private List<ProductBean> list2;
+	public List<ProductBean> getList2() {
+		return list2;
+	}
+	public void setList2(List<ProductBean> list2) {
+		this.list2 = list2;
+	}
+	
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕý³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØÐÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
-		// »ñµÃÉÌÆ·Ê÷±í
-		list=new ProductDao().GetTreeList("","Vno");
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+		list1=new ProductDao().GetTreeVnameList("","Vno");
+		list2=new ProductDao().GetTreeLnameList("","Lno");
 
 		return SUCCESS;
 		
 	}
 	
-	//ÅÐ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

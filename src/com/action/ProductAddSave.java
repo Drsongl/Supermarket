@@ -13,8 +13,8 @@ import com.dao.*;
 
 public class ProductAddSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
-	private Stirng Pno ;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String Pno ;
     private String Pname ;
     private String Sellprice ;
     private String Vno ;
@@ -22,6 +22,7 @@ public class ProductAddSave extends ActionSupport {
 	private String Lno ;
 	private String Lname ;
 	private String Shelfno ;
+	private String Stockout_n ;
 
 
 	public String getPno() {
@@ -72,52 +73,63 @@ public class ProductAddSave extends ActionSupport {
 	public void setShelfno(String shelfno) {
 		Shelfno = shelfno;
 	}
+	public String getStockout_n() {
+		return Stockout_n;
+	}
+	public void setStockout_n(String stockout_n) {
+		Stockout_n = stockout_n;
+	}
 
-}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·ç™»å½•è´¦å·');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
-		//²éÑ¯ÊÇ·ñ´æÔÚ
+		//ï¿½ï¿½Ñ¯ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 		List<ProductBean> list=new ProductDao().GetList("Pname='"+Pname+"'", "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('¸ÃÉÌÆ·Ãû³ÆÒÑ´æÔÚ£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('è¯¥å•†å“åç§°å·²å­˜åœ¨');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
-		//²éÑ¯»õ¼Ü±àºÅÊÇ·ñ´æÔÚ
-		List<ShelfBean> list=new ProductDao().GetShelfList("Shelfno="+Shelfno, "");
-		if(list.size()==0)
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+		List<ShelfBean> list1=new ProductDao().GetShelfList("Shelfno="+Shelfno, "");
+		if(list1.size()==0)
 		{
-			out.print("<script language='javascript'>alert('¸Ã»õ¼Ü²»´æÔÚ£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥å·²å­˜åœ¨çš„è´§æ¶ç¼–å·');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
 		if(Integer.parseInt(Stockout_n)<0 )
 		{
-			out.print("<script language='javascript'>alert('ÇëÊäÈëÕıµÄÉÌÆ·×îµÍ¿â´æÁ¿£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥æ­£æ•°çš„å•†å“æœ€ä½åº“å­˜é‡');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
+		if(Float.parseFloat(Sellprice)>99 )
+		{
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥åˆç†çš„å•†å“ä»·æ ¼');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
 
-		//Ìí¼Ó
+		//ï¿½ï¿½ï¿½
 		ProductBean cnbean=new ProductBean();
 		
 		cnbean.setPname(Pname);
-		cnbean.setSellprice(Float.parseFloat(Sellprice))
+		cnbean.setSellprice(Float.parseFloat(Sellprice));
 		cnbean.setVno(Integer.parseInt(Vno));
 		cnbean.setLno(Integer.parseInt(Lno));
 		cnbean.setShelfno(Integer.parseInt(Shelfno));
@@ -125,18 +137,18 @@ public class ProductAddSave extends ActionSupport {
 
 		new ProductDao().Add(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('Ìí¼Ó³É¹¦£¡');window.location='ProductManager.action';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('æˆåŠŸæ·»åŠ å•†å“');window.location='ProductManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

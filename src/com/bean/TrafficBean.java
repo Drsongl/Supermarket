@@ -1,10 +1,15 @@
 package com.bean;
+
+import java.util.Date;
+
 public class TrafficBean {
 
 	private int Tno ;
 	private Date Ttime ;
 	private int Gno ;
-	private int Pno ;
+	private String Pname ;
+	private String Vname  ;
+	private String Lname ;
 	private int Cno ;
 	private int Sno ;
 
@@ -27,18 +32,30 @@ public class TrafficBean {
 	public void setGno(int gno) {
 		Gno = gno;
 	}
-	public int getPno() {
-		return Pno;
+	public String getVname() {
+		return Vname;
 	}
-	public void setPno(int pno) {
-		Pno = pno;
+	public void setVname(String vname) {
+		Vname = vname;
+	}
+	public String getLname() {
+		return Lname;
+	}
+	public void setLname(String lname) {
+		Lname = lname;
+	}
+	public String getPname() {
+		return Pname;
+	}
+	public void setPname(String pname) {
+		Pname = pname;
 	}
 	public int getCno() {
 		return Cno;
 	}
 	public void setCno(int cno) {
 		Cno = cno;
-	}
+	}	
 	public int getSno() {
 		return Sno;
 	}

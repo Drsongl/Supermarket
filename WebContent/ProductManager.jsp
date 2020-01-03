@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </td>
           <td width="709" align="center" valign="top" bgcolor="#F6F9FE"><table width="709" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">产品信息管理</td>
+              <td height="30" background="Images/mainMenuBg.jpg" style="padding-left:25px;">商品信息管理</td>
             </tr>
             <tr>
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE">

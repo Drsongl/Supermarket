@@ -1,6 +1,6 @@
 package com.dao;
 import com.db.DBHelper;
-import com.bean.AdminBean;
+import com.bean.*;
 import java.util.*;
 import java.sql.*;
 	
@@ -8,10 +8,10 @@ public class WorkerDao {
 
 	//获取列表
 	public List<WorkerBean> GetList(String strwhere,String strorder){
-		String sql="select Sno, Sname, Sgrade, Sjob from worker_info";
+		String sql="select * from worker_info where ";
 		if(!(isInvalid(strwhere)))
 		{
-			sql+=" where "+strwhere;
+			sql+= strwhere;
 		}
 		if(!(isInvalid(strorder)))
 		{
@@ -26,10 +26,12 @@ public class WorkerDao {
 			rs = stat.executeQuery(sql);
 			while(rs.next()){
 				WorkerBean cnbean=new WorkerBean();
+				
 				cnbean.setSno(rs.getInt("Sno"));
-				cnbean.setSno(rs.getInt("Sgrade"));
+				cnbean.setSgrade(rs.getInt("Sgrade"));
 				cnbean.setSjob(rs.getString("Sjob"));
 				cnbean.setSname(rs.getString("Sname"));
+				
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {
@@ -49,19 +51,22 @@ public class WorkerDao {
 		return list;
 	}
 
-	public WorkerBean Getbean1(String Sname){
-		String sql="select * from worker_info where Sname='"+Sname+"'";
+	public WorkerBean GetBean(int Sno){
+		String sql="select * from worker_info where Sno="+Sno ;
+		
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
 		WorkerBean cnbean=new WorkerBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			rs = stat.executeQuery(sql);
+			while(rs.next()) {
 			cnbean.setSno(rs.getInt("Sno"));
-			cnbean.setSno(rs.getInt("Sgrade"));
+			cnbean.setSgrade(rs.getInt("Sgrade"));
 			cnbean.setSjob(rs.getString("Sjob"));
 			cnbean.setSname(rs.getString("Sname"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -78,21 +83,21 @@ public class WorkerDao {
 		}
 		return cnbean;
 	}
-
-
-	public WorkerBean Getbean2(int Sno){
-		String sql="select * from worker_info where Sno="+Sno;
+	
+	public void Add(WorkerBean cnbean){
+		String sql="insert into worker_info (";
+		sql+="Sno, Sjob, Sgrade, Sname";
+		sql+=") values(";
+		sql+=cnbean.getSno()+", '"+cnbean.getSjob()+"', "+cnbean.getSgrade()+", '"+cnbean.getSname()+"' ";
+		sql+=")";
+		
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
-		WorkerBean cnbean=new WorkerBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
-			cnbean.setSno(rs.getInt("Sno"));
-			cnbean.setSno(rs.getInt("Sgrade"));
-			cnbean.setSjob(rs.getString("Sjob"));
-			cnbean.setSname(rs.getString("Sname"));
+			stat.executeUpdate(sql);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -107,7 +112,6 @@ public class WorkerDao {
 				e.printStackTrace();
 			}
 		}
-		return cnbean;
 	}
 
 
@@ -116,14 +120,14 @@ public class WorkerDao {
 		String sql="update worker_info set ";
 		sql+="Sjob='"+cnbean.getSjob()+"',";
 		sql+="Sgrade="+cnbean.getSgrade()+",";
-		sql+="Sname='"+cnbean.getSname()+"',";
-		sql+="Sno="+cnbean.getSno();
+		sql+="Sname='"+cnbean.getSname()+"' ";
+		sql+="where Sno="+cnbean.getSno();
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -140,35 +144,7 @@ public class WorkerDao {
 		}
 	}
 
-	//经理修改员工信息
-	public void Update(WorkerBean cnbean){
-		String sql="update worker_info set ";
-		sql+="Sno="+cnbean.getSno()+",";
-		sql+="Sname='"+cnbean.getSname()+"',";
-		sql+="Sgrade="+cnbean.getSgrade()+",";
-		sql+="Sjob='"+cnbean.getSjob()+"'";
-		Statement stat = null;
-		ResultSet rs = null;
-		Connection conn = new DBHelper().getConn();
-		try{
-			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (stat != null)
-					stat.close();
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
+	
 	//删除
 	public void Delete(String strwhere){
 		String sql="delete worker_info where ";
@@ -178,7 +154,7 @@ public class WorkerDao {
 		Connection conn = new DBHelper().getConn();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			stat.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

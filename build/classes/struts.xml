@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="strutsqs" extends="struts-default" namespace="/" >
+
+		<action name="GoLogin" class="com.action.GoLogin">
+			<result name="input">/Login.jsp</result>
+			<result name="success">/Index.jsp</result>
+		</action>
+		<action name="Quit" class="com.action.Quit">
+			<result name="success">/Login.jsp</result>
+		</action>
+
+		<!--product management-->
+		<action name="ProductManager" class="com.action.ProductManager">
+			<result name="success">/ProductManager.jsp</result>
+		</action>
+		<action name="ProductAdd" class="com.action.ProductAdd">
+			<result name="success">/ProductAdd.jsp</result>
+		</action>
+		<action name="ProductAddSave" class="com.action.ProductAddSave">
+		</action>
+		<action name="ProductUpdate" class="com.action.ProductUpdate">
+		    <result name="success">/ProductUpdate.jsp</result>
+		</action>
+		<action name="ProductUpdateSave" class="com.action.ProductUpdateSave">
+		</action>
+		<action name="ProductDel" class="com.action.ProductDel">
+		  <result name="success" type="chain">ProductManager</result>
+		</action>
+		<!--worker management-->
+		<action name="WorkerManager" class="com.action.WorkerManager">
+			<result name="success">/WorkerManager.jsp</result>
+		</action>
+		<action name="WorkerAdd" class="com.action.WorkerAdd">
+			<result name="success">/WorkerAdd.jsp</result>
+		</action>
+		<action name="WorkerAddSave" class="com.action.WorkerAddSave">
+		</action>
+		<action name="WorkerUpdate" class="com.action.WorkerUpdate">
+		    <result name="success">/WorkerUpdate.jsp</result>
+		</action>
+		<action name="WorkerUpdateSave" class="com.action.WorkerUpdateSave">
+		</action>
+		<action name="WorkerDel" class="com.action.WorkerDel">
+		  	<result name="success" type="chain">WorkerManager</result>
+		</action>
+
+		<!--Storage Management-->
+		<action name="StorageManager" class="com.action.StorageManager">
+			<result name="success">/StorageManager.jsp</result>
+		</action>
+		<action name="StorageUpdate" class="com.action.StorageUpdate">
+		    <result name="success">/StorageUpdate.jsp</result>
+		</action>
+		<action name="StorageUpdateSave" class="com.action.StorageUpdateSave">
+		</action>
+
+		<!--Advice Management-->
+		<action name="AdviceManager" class="com.action.AdviceManager">
+			<result name="success">/AdviceManager.jsp</result>
+		</action>
+		<action name="AdviceUpdate" class="com.action.AdviceUpdate">
+		    <result name="success">/AdviceUpdate.jsp</result>
+		</action>
+		<action name="AdviceUpdateSave" class="com.action.AdviceUpdateSave">
+		</action>
+
+		<!--Advice Worker-->
+		<action name="AdviceWorker" class="com.action.AdviceWorker">
+			<result name="success">/AdviceWorker.jsp</result>
+		</action>
+
+		<!--Advice Student-->
+		<action name="AdviceStudent" class="com.action.AdviceStudent">
+			<result name="success">/AdviceStudent.jsp</result>
+		</action>
+		<action name="AdviceAdd" class="com.action.AdviceAdd">
+		    <result name="success">/AdviceAdd.jsp</result>
+		</action>
+		<action name="AdviceAddSave" class="com.action.AdviceAddSave">
+		</action>
+
+		<!--Replenish Management-->
+		<action name="ReplenishManager" class="com.action.ReplenishManager">
+			<result name="success">/ReplenishManager.jsp</result>
+		</action>
+		<action name="ReplenishAdd" class="com.action.ReplenishAdd">
+			<result name="success">/ReplenishAdd.jsp</result>
+		</action>
+		<action name="ReplenishAddSave" class="com.action.ReplenishAddSave">
+		</action>
+
+		<!--Sale Management-->
+		<action name="SaleManager" class="com.action.SaleManager">
+			<result name="success">/SaleManager.jsp</result>
+		</action>
+
+		<!--User Management-->
+		<action name="UserUpdate" class="com.action.UserUpdate">
+			<result name="success">/UserUpdate.jsp</result>
+		</action>
+		<action name="UserUpdateSave" class="com.action.UserUpdateSave">
+		</action>
+
+
+		<!--product Worker + student-->
+		<action name="ProductWorker" class="com.action.ProductWorker">
+			<result name="success">/ProductWorker.jsp</result>
+		</action>
+		
+		<!--Storage Worker + student-->
+		<action name="StorageWorker" class="com.action.StorageWorker">
+			<result name="success">/StorageWorker.jsp</result>
+		</action>
+
+		<!--Replenish Worker-->
+		<action name="ReplenishWorker" class="com.action.ReplenishWorker">
+			<result name="success">/ReplenishWorker.jsp</result>
+		</action>
+		<action name="ReplenishUpdate" class="com.action.ReplenishUpdate">
+			<result name="success">/ReplenishUpdate.jsp</result>
+		</action>
+		<action name="ReplenishUpdateSave" class="com.action.ReplenishUpdateSave">
+		</action>
+		<action name="ReplenishDel" class="com.action.ReplenishDel">
+		  	<result name="success" type="chain">ReplenishWorker</result>
+		</action>
+
+
+	</package>
+</struts>    

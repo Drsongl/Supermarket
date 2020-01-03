@@ -2,6 +2,7 @@ package com.action;
 
 import java.io.PrintWriter;
 import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
@@ -13,25 +14,19 @@ import com.dao.*;
 
 public class AdviceUpdateSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String Ono ;
-	private String Offtime ;
 	private String Sno ;
 	private String Ostatus ;
 
 	
 	public String getOno() {
-		return Pno;
+		return Ono;
 	}
 	public void setOno(String ono) {
 		Ono = ono;
 	}
-	public String getOfftime() {
-		return Pno;
-	}
-	public void setOfftime(String offtime) {
-		Offtime = offtime;
-	}
+	
 	public String getSno() {
 		return Sno;
 	}
@@ -39,53 +34,52 @@ public class AdviceUpdateSave extends ActionSupport {
 		Sno = sno;
 	}
 	public String getOstatus() {
-		return Pno;
+		return Ostatus;
 	}
 	public void setOstatus(String ostatus) {
 		Ostatus = ostatus;
 	}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·ç™»å½•è´¦æˆ·');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
 		
-		//ĞŞ¸Ä
+		//ï¿½Ş¸ï¿½
 		
 		AdviceBean cnbean=new AdviceBean();
-		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono)); 
-		cnbean.setOfftime(Offtime);
-		cnbean.setSno(Sno);
-		cnbean.setOstatus(Ostatus);
+		cnbean=new AdviceDao().GetBean(Integer.parseInt(Ono));
+		cnbean.setSno(Integer.parseInt(Sno));
+		cnbean.setOstatus(Integer.parseInt(Ostatus));
 
 		new AdviceDao().Update(cnbean); // We only change quantity
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('ĞŞ¸Ä³É¹¦£¡');window.location='AdviceManager.action';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('å®Œæˆæ„è§è·Ÿè¸ªï¼');window.location='AdviceManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

@@ -11,10 +11,10 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductAddSave extends ActionSupport {
+public class WorkerAddSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
-	private Stirng Sno ;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String Sno ;
     private String Sname ;
     private String Sgrade ;
     private String Sjob ;
@@ -24,7 +24,7 @@ public class ProductAddSave extends ActionSupport {
 	public String getSno() {
 		return Sno;
 	}
-	public void setSno(int sno) {
+	public void setSno(String sno) {
 		Sno = sno;
 	}
 	public String getSname() {
@@ -46,54 +46,60 @@ public class ProductAddSave extends ActionSupport {
 		Sjob = sjob;
 	}
 
-}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
-		//²éÑ¯ÊÇ·ñ´æÔÚ
-		List<ProductBean> list=new WorkerDao().GetList("Sno="+Sno+"", "");
+		//ï¿½ï¿½Ñ¯ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+		List<WorkerBean> list=new WorkerDao().GetList("Sno="+Sno, "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('¸ÃÔ±¹¤Ñ§ºÅÒÑ´æÔÚ£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('è¯¥å­¦å·å·²è¢«æ³¨å†Œ');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
-		//Ìí¼Ó
+		
+		if(Integer.parseInt(Sgrade)>4)
+		{
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥åˆé€‚çš„å¹´çº§ï¼ˆ1-4ï¼‰');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
+		//ï¿½ï¿½ï¿½
 		WorkerBean cnbean=new WorkerBean();
 		cnbean.setSno(Integer.parseInt(Sno));
 		cnbean.setSname(Sname);
-		cnbean.setSgrade(Float.parseFloat(Sgrade))
+		cnbean.setSgrade(Integer.parseInt(Sgrade));
 		cnbean.setSjob(Sjob);
 
 		new WorkerDao().Add(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('Ìí¼Ó³É¹¦£¡');window.location='WorkerManager.action';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('å‘˜å·¥æ·»åŠ æˆåŠŸï¼');window.location='WorkerManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

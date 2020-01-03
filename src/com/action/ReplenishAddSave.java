@@ -12,23 +12,15 @@ import com.bean.*;
 import com.dao.*;
 
 
-public class ProductAddSave extends ActionSupport {
+public class ReplenishAddSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
-	private String Ino ;
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private String Prono ;
     private String Pno ;
 	private String Inum ;
     private String Grossprice ;
 	private String Sno ;
-	private String Idata ;
 
-	public String getIno() {
-		return Username;
-	}
-	public void setIno(String ino) {
-		Ino = ino;
-	}
 	public String getProno() {
 		return Prono;
 	}
@@ -56,60 +48,53 @@ public class ProductAddSave extends ActionSupport {
 	public String getSno() {
 		return Sno;
 	}
-	public void setSno(String Sno) {
+	public void setSno(String sno) {
 		Sno = sno;
-	}
-	public String getIdate() {
-		return Idate;
-	}
-	public void setIdate(String idate) {
-		Idate = idate;
 	}			
 
-}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·ç™»å½•è´¦å·');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
 		
-		//Ìí¼Ó
+		//ï¿½ï¿½ï¿½
 		ReplenishBean cnbean=new ReplenishBean();
 		cnbean.setProno(Integer.parseInt(Prono));
 		cnbean.setPno(Integer.parseInt(Pno));
-		cnbean.setIno(Integer.parseInt(Ino));
-		cnbean.setGrossprice(Float.parseFloat(Grossprice))
-		cnbean.setSno(Sno);
-		cnbean.setIdate(Idate);
+		cnbean.setGrossprice(Float.parseFloat(Grossprice));
+		cnbean.setSno(Integer.parseInt(Sno));
+		cnbean.setPno(Integer.parseInt(Inum));
 
 		new ReplenishDao().Add(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('Ìí¼Ó³É¹¦£¡');window.location='ReplenishManager.action';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('æˆåŠŸæ·»åŠ ä¾›è´§è®°å½•');window.location='ReplenishManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

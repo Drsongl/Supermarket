@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             <tr>
               <td height="470" align="center" valign="top" bgcolor="#F6F9FE">
-                <form name="form1" method="post" action="DomitoryManager.action">
+                <form name="form1" method="post" action="WorkerManager.action">
                   <table width="100%%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td width="22%" height="30" style="padding-left:20px;"> 功能导航： <a href="WorkerAdd.action">添加员工</a></td>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Sname}</td>
                       <td align="center">${Sgrade}</td>
                       <td align="center">${Sjob}</td>
-                      <td align="center"><a href="WorkerUpdate.action?Sno=${Sno}">修改</a> <a href="WorkerDel.action?Sno=${Sno}" onClick="return confirm('确定要删除该产品吗？')">删除</a></td>
+                      <td align="center"><a href="WorkerUpdate.action?Sno=${Sno}">修改</a> <a href="WorkerDel.action?Sno=${Sno}" onClick="return confirm('确定要删除该员工吗？')">删除</a></td>
                     </tr>
                   </s:iterator>
                 </table></td>

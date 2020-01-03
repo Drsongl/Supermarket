@@ -13,7 +13,7 @@ import com.dao.*;
 
 public class ProductUpdateSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×°ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String Pno ;
     private String Pname ;
 	private String Sellprice ;
@@ -22,6 +22,7 @@ public class ProductUpdateSave extends ActionSupport {
 	private String Lno ;
 	//private String Lname ;
 	private String Shelfno ;
+	private String Stockout_n ;
 	
 	public String getPno() {
 		return Pno;
@@ -71,36 +72,53 @@ public class ProductUpdateSave extends ActionSupport {
 	public void setShelfno(String shelfno) {
 		Shelfno = shelfno;
 	}
+	public String getStockout_n() {
+		return Stockout_n;
+	}
+	public void setStockout_n(String stockout_n) {
+		Stockout_n = stockout_n;
+	}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½executeï¿½ï¿½ï¿½ï¿½
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//ï¿½ï¿½Ö¤ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·ç™»å½•è´¦å·');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
-		//²éÑ¯newnameÊÇ·ñ´æÔÚ
+		//ï¿½ï¿½Ñ¯newnameï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 		List<ProductBean> list=new ProductDao().GetList("Pname='"+Pname+"' and Pno!="+Pno, "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('¸ÃÉÌÆ·Ãû³ÆÒÑ´æÔÚ£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('è¯¥å•†å“åç§°å·²è¢«å…¶ä»–å•†å“ä½¿ç”¨');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
-		//ĞŞ¸Ä
+		//ï¿½Ş¸ï¿½
+		List<ShelfBean> list1=new ProductDao().GetShelfList("Shelfno="+Shelfno, "");
+		if(list1.size()==0)
+		{
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥å·²å­˜åœ¨çš„è´§æ¶ç¼–å·');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
+		if(Integer.parseInt(Stockout_n)<0 )
+		{
+			out.print("<script language='javascript'>alert('è¯·è¾“å…¥æ­£æ•°çš„å•†å“æœ€ä½åº“å­˜é‡');history.back(-1);</script>");
+			out.flush();out.close();return null;
+		}
 		
 		ProductBean cnbean=new ProductBean();
-		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); //Pno ²ÉÓÃ×ÔÔöµÄ·½Ê½£¬²»¾ßÓĞÊµ¼ÊÒâÒå
+		cnbean=new ProductDao().GetBean(Integer.parseInt(Pno)); //Pno ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		cnbean.setPname(Pname);
 		cnbean.setSellprice(Float.parseFloat(Sellprice));
 		cnbean.setVno(Integer.parseInt(Vno));
@@ -109,18 +127,18 @@ public class ProductUpdateSave extends ActionSupport {
 		cnbean.setStockout_n(Integer.parseInt(Stockout_n));
 		new ProductDao().Update(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('ĞŞ¸Ä³É¹¦£¡');window.location='ProductManager.action';</script>");
+		//ï¿½ï¿½×ª
+		out.print("<script language='javascript'>alert('ä¿®æ”¹æˆåŠŸï¼');window.location='ProductManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½Öµ
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args) {
 		System.out.println();
 	}

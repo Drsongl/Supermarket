@@ -1,4 +1,5 @@
 package com.bean;
+
 public class ShelfBean {
 
     private int Shelfno ;
@@ -21,7 +22,7 @@ public class ShelfBean {
 	public String getShelfloc() {
 		return Shelfloc;
 	}
-	public void setShelfloc(String Shelfloc) {
+	public void setShelfloc(String shelfloc) {
 		Shelfloc = shelfloc;
 	}	
 	public int getSno() {

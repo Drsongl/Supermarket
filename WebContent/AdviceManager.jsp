@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <tr align="center"  class="t1">
                     <td height="25" bgcolor="#D5E4F4"><strong>建议编号</strong></td>
                     <td bgcolor="#D5E4F4"><strong>消费者学号</strong></td>
-                    <td bgcolor="#D5E4F4"><strong>建议内容</strong></td>
+                    <td bgcolor="#D5E4F4" width="15%"><strong>建议内容</strong></td>
                     <td bgcolor="#D5E4F4"><strong>建议时间</strong></td>
                     <td bgcolor="#D5E4F4"><strong>解决时间</strong></td>
                     <td bgcolor="#D5E4F4"><strong>建议状态</strong></td>
@@ -68,10 +68,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <td align="center">${Oname}</td>
                       <td align="center">${Ontime}</td>
                       <td align="center">${Offtime}</td>
-                      <td align="center">${Ostate}</td>
+                      <td align="center">${Ostatus}</td>
                       <td align="center">${Sno}</td>
                       
-                      <td align="center"><a href="AdviceUpdate.action?Ono=${Ono}">更新状态</a> </td>
+                      <td align="center"><a href="AdviceUpdate.action?Ono=${Ono}">完成意见</a> </td>
                     </tr>
                   </s:iterator>
                 </table></td>

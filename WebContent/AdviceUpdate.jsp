@@ -59,22 +59,38 @@ return re.test(str);
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="33%" height="30" align="right">&nbsp;</td>
-                    <td height="30" align="right"><span style="color:red;">*</span>意见编码：</td>
-                    <td width="67%"><input name="Ono" type="text" disabled='disabled' id="Ono" value="<s:property value='cnbean.Ono'/>"></td>
+                    <td width="67%"></td>
                   </tr>
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>解决时间：</td>
-                    <td><input name="Offtime" type="text" class="text2" id="Offtime" value=""></td>
+                    <td height="30" align="right">意见编码：</td>
+                    <td><input name="Ono" type="text" readonly="readonly" id="Ono" value="<s:property value='cnbean.Ono'/>"></td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">消费者学号：</td>
+                    <td><input name="Cno" type="text" class="text2" id="Cno" readonly="readonly" value="<s:property value='cnbean.Cno'/>"></td>
+                  </tr>
+                  <tr>
+                    <td height="60" align="right">建议内容：</td>
+                    <td><input name="Oname" type="text" class="text2" id="Oname" readonly="readonly" value="<s:property value='cnbean.Oname'/>"></td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">提出时间：</td>
+                    <td><input name="Ontime" type="text" class="text2" id="Ontime" readonly="readonly" value="<s:property value='cnbean.Ontime'/>"></td>
                   </tr>
 
                   <tr>
-                    <td height="30" align="right"><span style="color:red;">*</span>负责员工编号：</td>
-                    <td><input name="Sno" type="text" class="text2" id="Sno" value=""></td>
+                    <td height="30" align="right"><span style="color:red;">*</span>负责员工：</td>
+                    <td><select name="Sno" id="Sno">
+                      <option value="">请选择</option>
+                      <s:iterator id="aa" value="list"> <!--here list should be producttreebean-->
+                        <option value="${Sno}"> ${Sname}</option>
+                      </s:iterator>
+                    </select></td>
                   </tr>
 
                   <tr>
                       <td height="30" align="right"><span style="color:red;">*</span>建议状态：</td>
-                      <td><input name="Ostatus" type="text" class="text2" id="Ostatus" value="1"></td>
+                      <td><input name="Ostatus" type="text" class="text2" id="Ostatus" readonly="readonly" value="1">1代表完成建议，自动填充</td>
                   </tr>
                   
                 

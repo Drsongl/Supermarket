@@ -1,6 +1,6 @@
 package com.dao;
 import com.db.DBHelper;
-import com.bean.AdminBean;
+import com.bean.*;
 import java.util.*;
 import java.sql.*;
 
@@ -32,7 +32,7 @@ public class AdviceDao {
 				cnbean.setOname(rs.getString("Oname"));
 				cnbean.setOntime(rs.getDate("Ontime"));
 				cnbean.setOfftime(rs.getDate("Offtime"));
-				cnbean.setOstatus(rs.getint("Ostatus"));				
+				cnbean.setOstatus(rs.getInt("Ostatus"));				
 				list.add(cnbean);
 			}
 		} catch (SQLException e) {
@@ -52,22 +52,24 @@ public class AdviceDao {
 		return list;
 	}
 
-	public AdviceBean GetBean(String Oname){
-		String sql="select Ono, Oname, Cno, Ontime, Offtime, Ostatus, Sno from  require_info  where Oname='"+Oname+"'";
+	public AdviceBean GetBean(int Ono){
+		String sql="select Ono, Oname, Cno, Ontime, Offtime, Ostatus, Sno from  require_info  where Ono="+Ono;
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();
 		AdviceBean cnbean=new AdviceBean();
 		try{
 			stat = conn.createStatement();
-			rs = stat.executeUpdate(sql);
+			rs = stat.executeQuery(sql);
+			while(rs.next()){
 			cnbean.setOno(rs.getInt("Ono"));
 			cnbean.setCno(rs.getInt("Cno"));
 			cnbean.setSno(rs.getInt("Sno"));
 			cnbean.setOname(rs.getString("Oname"));
 			cnbean.setOntime(rs.getDate("Ontime"));
 			cnbean.setOfftime(rs.getDate("Offtime"));
-			cnbean.setOstatus(rs.getint("Ostatus"));
+			cnbean.setOstatus(rs.getInt("Ostatus"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -88,13 +90,10 @@ public class AdviceDao {
 	//修改
 	public void Update(AdviceBean cnbean){
 		String sql="update require_info set ";
-		sql+="Ono="+cnbean.getOno()+",";
-		sql+="Oname='"+cnbean.getOname()+"',";
-		sql+="Cno="+cnbean.getCno()+",";
-		sql+="Ontime='"+cnbean.getOntime()+"',";
-		sql+="Offtime='"+cnbean.getOfftime()+"',";
+		sql+="Offtime= getdate(),";
 		sql+="Sno="+cnbean.getSno()+",";
-		sql+="Ostatus="+cnbean.getOstatus();	
+		sql+="Ostatus="+cnbean.getOstatus();
+		sql+="where Ono="+cnbean.getOno();
 		Statement stat = null;
 		ResultSet rs = null;
 		Connection conn = new DBHelper().getConn();

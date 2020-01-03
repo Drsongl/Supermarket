@@ -1,4 +1,5 @@
 package com.bean;
+
 public class ProductBean {
 
     private int Pno ;
@@ -60,11 +61,11 @@ public class ProductBean {
 	public void setShelfno(int shelfno) {
 		Shelfno = shelfno;
 	}
-	public String getShelfno() {
-		return Shelfno;
+	public String getShelfloc() {
+		return Shelfloc;
 	}
-	public void setShelfno(String shelfno) {
-		Shelfno = shelfno;
+	public void setShelfloc(String shelfloc) {
+		Shelfloc = shelfloc;
 	}
 	public int getStockout_n() {
 		return Stockout_n;

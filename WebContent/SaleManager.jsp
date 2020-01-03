@@ -36,8 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <form name="form1" method="post" action="SaleManager.action">
                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td width="22%" height="30" style="padding-left:20px;"> 功能导航： </td>
-                      <td width="45%">查询：
+                      <td width="15%" height="30" style="padding-left:20px;"> 查询： </td>
+                      <td width="45%">条件1：
                         <select name="SearchRow1" id="SearchRow1">
                           <option value="">--</option>
                           <option value="Pname">商品名称</option>
@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </select>
                         <input name="SearchKey1" type="text" class="text1" id="SearchKey1">
                         
-                        <td width="33%">
+                        <td width="45%">条件2：
                           <select name="SearchRow2" id="SearchRow2">
                             <option value="">--</option>
                             <option value="Pname">商品名称</option>
@@ -55,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <option value="Lname">商品小类名称</option>
                             <option value="Ttime">销售时间</option>
                           </select>
-                          <input name="SearchKey2" type="text" class="text1" id="SearchKey2">
-                          <input type="submit" name="button" id="button" value="点击查询"></td>
+                          <input name="SearchKey2" type="text" class="text1" id="SearchKey2"></td>
+                         <td width="10%"> <input type="submit" name="button" id="button" value="点击查询"></td>
                     </tr>
                   </table>
                 </form>
@@ -68,15 +68,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td bgcolor="#D5E4F4"><strong>商品大类</strong></td>
                     <td bgcolor="#D5E4F4"><strong>商品小类</strong></td>
                     <td bgcolor="#D5E4F4"><strong>消费者学号</strong></td>
+                    <td bgcolor="#D5E4F4"><strong>负责员工学号</strong></td>
                   </tr>
                   <s:iterator id="aa" value="list">
                     <tr align="center">
-                      <td height="25" align="center">${Ttime}</td>
-                      <td align="center">${Gno}</td>
+                      <td height="25" align="center">${Gno}</td>
+                      <td align="center">${Ttime}</td>
                       <td align="center">${Pname}</td>
                       <td align="center">${Vname}</td>
                       <td align="center">${Lname}</td>
                       <td align="center">${Cno}</td>
+                      <td align="center">${Sno}</td>
                     </tr>
                   </s:iterator>
                 </table></td>

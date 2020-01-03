@@ -3,7 +3,8 @@ public class StorageBean {
 
     private int Pno ;
 	private String Pname ;
-	private int Allquantity;
+	private int Quantity;
+	private int Stockout_n;
 	
 	public int getPno() {
 		return Pno;
@@ -17,10 +18,16 @@ public class StorageBean {
 	public void setPname(String pname) {
 		Pname = pname;
 	}
-	public int getAllquantity() {
-		return Allquantity;
+	public int getQuantity() {
+		return Quantity;
 	}
-	public void setAllquantity(int allquantity) {
-		Allquantity = allquantity;
-	}	
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
+	}
+	public int getStockout_n() {
+		return Stockout_n;
+	}
+	public void setStockout_n(int stockout_n) {
+		Stockout_n = stockout_n;
+	}
 }
